@@ -64,6 +64,7 @@ zenodo_release_v2/
 docs/jim_memory/
 docs/reports/
 py/**/__pycache__/
+tools/**/__pycache__/
 py/music12/blocks/Block002_audio_recogn/_archive_pre_micro/
 py/music12/blocks/Block002_audio_recogn/_deprecated_2026_05_11/
 
