@@ -67,6 +67,13 @@ py/**/__pycache__/
 tools/**/__pycache__/
 py/music12/blocks/Block002_audio_recogn/_archive_pre_micro/
 py/music12/blocks/Block002_audio_recogn/_deprecated_2026_05_11/
+tools/backup_codex_state.ps1
+tools/maxwell_snapshot.py
+tools/project_snapshot.py
+tools/run_bach_midi_audio_v3_from_families_block002_pipeline.py
+tools/run_bach_midi_audio_v3_from_probe.ps1
+tools/run_phase_cluster_realpiano1.py
+tools/run_realpiano1_full_scan.py
 
 # Office / editor noise
 ~$*
