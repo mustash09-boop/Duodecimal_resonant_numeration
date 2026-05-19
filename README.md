@@ -125,6 +125,7 @@ but a few compact cases:
 
 ## Existing public records
 
+- [GitHub release: Public Snapshot v1](https://github.com/mustash09-boop/Duodecimal_resonant_numeration/releases/tag/public-snapshot-v1)
 - [Zenodo record 10.5281/zenodo.20076382](https://doi.org/10.5281/zenodo.20076382)
 - [Zenodo record 10.5281/zenodo.18431048](https://doi.org/10.5281/zenodo.18431048)
 
