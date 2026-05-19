@@ -1,0 +1,8 @@
+numpy
+soundfile
+pandas
+
+google-cloud-storage
+google-cloud-batch
+
+scipy

@@ -61,6 +61,8 @@ zenodo_release_v2/
 !tools/**
 !links/**
 !papers/**
+
+# Hide internal research memory and archives
 docs/jim_memory/
 docs/reports/
 py/**/__pycache__/
@@ -71,6 +73,8 @@ py/music12/blocks/Block002_audio_recogn/BLOCK002_AUDIT_BY_DATE.txt
 py/music12/blocks/Block002_audio_recogn/batch_high_register_runner.py
 py/music12/blocks/Block002_audio_recogn/batch_probe_scan_from_list_cli.py
 py/music12/blocks/Block002_audio_recogn/collect_high_register_summary_cli.py
+
+# Machine-specific helper scripts stay local
 tools/backup_codex_state.ps1
 tools/maxwell_snapshot.py
 tools/project_snapshot.py
@@ -88,7 +92,7 @@ tools/run_realpiano1_full_scan.py
 Thumbs.db
 *.docx
 
-# Local root noise files
+# Public root files we do want
 !README.md
 !LICENSE.md
 !.gitignore
@@ -96,43 +100,53 @@ Thumbs.db
 !Dockerfile
 !requirements_cloud.txt
 !DUODECIMAL_NOTATION_AND_TIME60.md
-!PROJECT_TREE_CODE.txt
-!PROJECT_TREE_DIRS.txt
-!BACH_REPORTS_TREE.txt
-!block002_files.txt
-!core_files.txt
-!files_list.txt
-!RealPiano_1_one_note_files.txt
-!RealPiano_1_reports_dirs.txt
-!build_spiral3d_index_html.py
-!check_polyphony_counts.py
-!render_spiral3d_publication_png.py
-!render_spiral3d_publication_png_v2.py
-!filter_*_fixed_manifest.py
-!fix_cyrillic_abc_all_instruments.py
-!fix_cyrillic_abc_filenames.py
-!rename_realpiano_add_tag.py
-!copy_piano_midi1_clean.bat
-!copy_realpiano_reports_clean.bat
-!run_block004_passport_archive_app.bat
-!run_note_box_profiles_instruments.bat
-!run_percussion_convert.bat
-!run_percussion_manifest.bat
+
+# Root auxiliary research indexes and one-off helpers stay local for now
+BACH_REPORTS_TREE.txt
+PROJECT_TREE_CODE.txt
+PROJECT_TREE_DIRS.txt
+RealPiano_1_one_note_files.txt
+RealPiano_1_reports_dirs.txt
+block002_files.txt
+core_files.txt
+files_list.txt
+build_spiral3d_index_html.py
+check_polyphony_counts.py
+render_spiral3d_publication_png.py
+render_spiral3d_publication_png_v2.py
+filter_*_fixed_manifest.py
+fix_cyrillic_abc_all_instruments.py
+fix_cyrillic_abc_filenames.py
+rename_realpiano_add_tag.py
+copy_piano_midi1_clean.bat
+copy_realpiano_reports_clean.bat
+run_block004_passport_archive_app.bat
+run_note_box_profiles_instruments.bat
+run_percussion_convert.bat
+run_percussion_manifest.bat
+
+# Legacy root python helpers stay local until they are cleaned
+py/build_coords_delta_view_v8.py
+py/build_note_centers_v8.py
+py/build_polyphonic_note_timeline_v8.py
+py/merge_probe_v7.py
+py/merge_probe_v8.py
+py/rewrite_coords_v8.py
 
 # Ignore stray root files with note-like or temporary names
 \!NOTE!
-+ 
++
 cd
 task_kind')
 test.csv
 test.json
 [0-9][0-9].[0-9A-C]-
 [0-9A-C].[0-9A-C]-
-\320*
-\321*
 заготовка временная
-строка
 Непредвиденная
 Отсутствует
 Отчёт после последней команды.txt
+ПАСПОРТ ЧАТА 14_03.docx
+ПАСПОРТ ЧАТА15_03.docx
+строка
 Файлы для полного пайплайна.txt
