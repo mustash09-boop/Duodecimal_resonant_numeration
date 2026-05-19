@@ -9,6 +9,21 @@ The current research focus is musical audio because it gives a controllable and
 verifiable environment for testing the method. The longer-term goal is broader:
 an interpretable framework for resonance structure in complex signals.
 
+## Quick entry points
+
+If you want a fast public tour, start here:
+
+- [One-note cross-instrument example](examples/same-note-banjo-vs-guitar/README.md)
+- [Short Bach polyphonic research snapshot](examples/bach-polyphonic-research-snapshot/README.md)
+- [Short Ave Maria ensemble-role research snapshot](examples/ave-maria-ensemble-role-snapshot/README.md)
+- [Publication image gallery](images/publication/IMAGE_GALLERY.md)
+
+## Research status
+
+This repository is an active research lab, not a finished product. Some
+examples are intentionally marked as `ongoing research` and show both current
+strengths and current gaps of the method.
+
 ## Core research ideas
 
 - duodecimal harmonic coordinates
@@ -44,7 +59,7 @@ The project uses a custom 12-radix pitch and microstructure notation such as:
 - `8.C'a53`
 - `9.A'i6C`
 
-This notation is tied to the project’s harmonic and spiral geometry rather than
+This notation is tied to the project's harmonic and spiral geometry rather than
 to historical note naming alone.
 
 ### Spiral-time representation
@@ -83,14 +98,14 @@ of GitHub and be described through manifests instead.
 
 ## Main directories
 
-- [docs](E:/Duodecimal_resonant_numeration/docs) — architecture, public release notes, research memory
-- [py](E:/Duodecimal_resonant_numeration/py) — core code
-- [tools](E:/Duodecimal_resonant_numeration/tools) — external runners, audits, and experimental layers
-- [examples](E:/Duodecimal_resonant_numeration/examples) — minimal reproducible public examples
-- [images](E:/Duodecimal_resonant_numeration/images) — publication-oriented visuals
-- [manifests](E:/Duodecimal_resonant_numeration/manifests) — descriptions of large offline datasets
-- [papers](E:/Duodecimal_resonant_numeration/papers) — whitepapers and publication material
-- [links](E:/Duodecimal_resonant_numeration/links) — cloud/archive/public links
+- [docs](docs) - architecture, release notes, public research documents
+- [py](py) - core code
+- [tools](tools) - external runners, audits, and experimental layers
+- [examples](examples) - minimal reproducible public examples
+- [images](images) - publication-oriented visuals
+- [manifests](manifests) - descriptions of large offline datasets
+- [papers](papers) - whitepapers and publication material
+- [links](links) - cloud, archive, and public links
 
 ## Good first public demonstrations
 
@@ -103,9 +118,10 @@ but a few compact cases:
 
 ## Next public-release documents
 
-- [docs/GITHUB_PUBLIC_RELEASE_GUIDE.md](E:/Duodecimal_resonant_numeration/docs/GITHUB_PUBLIC_RELEASE_GUIDE.md)
-- [manifests/PUBLIC_RELEASE_SCOPE_v1.md](E:/Duodecimal_resonant_numeration/manifests/PUBLIC_RELEASE_SCOPE_v1.md)
-- [links/CLOUD_AND_ARCHIVE_LINKS.md](E:/Duodecimal_resonant_numeration/links/CLOUD_AND_ARCHIVE_LINKS.md)
+- [docs/PUBLIC_RELEASE_SNAPSHOT_V1.md](docs/PUBLIC_RELEASE_SNAPSHOT_V1.md)
+- [docs/GITHUB_PUBLIC_RELEASE_GUIDE.md](docs/GITHUB_PUBLIC_RELEASE_GUIDE.md)
+- [manifests/PUBLIC_RELEASE_SCOPE_v1.md](manifests/PUBLIC_RELEASE_SCOPE_v1.md)
+- [links/CLOUD_AND_ARCHIVE_LINKS.md](links/CLOUD_AND_ARCHIVE_LINKS.md)
 
 ## Existing public records
 

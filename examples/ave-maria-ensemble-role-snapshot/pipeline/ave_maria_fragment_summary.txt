@@ -1,0 +1,55 @@
+AVE MARIA ENSEMBLE ROLE SNAPSHOT
+========================================================================
+window_sec: 80.0 -> 90.0
+window_frames60: 4800 -> 5400
+
+midi_events: 142
+midi_track_counts:
+  Piano-Treble: 80
+  Organ-Treble: 22
+  Cello: 15
+  Violin: 15
+  Cello 2: 8
+  Organ-Bass: 2
+
+layered_events: 108
+dominant_instrument_counts:
+  cello: 36
+  organ: 31
+  piano: 23
+  UNRESOLVED_FIELD: 18
+
+support_combo_top:
+  <NONE>: 41
+  piano: 18
+  violin+organ: 12
+  cello+piano: 9
+  cello+organ: 8
+  piano+organ: 6
+  cello: 4
+  piano+cello: 2
+  cello+violin: 2
+  piano+cello+violin: 2
+
+role_mapped_events: 108
+role_pattern_counts:
+  INTERNAL_WAVE_EVENT: 46
+  BODY_RETURN_EVENT: 44
+  PRIMARY_WITH_SUPPORT_EVENT: 6
+  FIELD_TRACE_EVENT: 4
+  UNRESOLVED_FIELD_EVENT: 3
+  PRIMARY_SINGLE_OWNER_EVENT: 2
+  PIANO_ATTACK_EVENT: 2
+  PIANO_PRIMARY_WITH_FALSE_CELLO_SUPPORT: 1
+
+attack_owner_counts:
+  <NONE>: 97
+  piano: 6
+  organ: 3
+  cello: 2
+
+sustain_owner_counts:
+  <NONE>: 40
+  organ: 29
+  cello: 25
+  piano: 14

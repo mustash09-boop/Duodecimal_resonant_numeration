@@ -4,14 +4,15 @@ This directory is for small, reproducible public examples only.
 
 Recommended first public cases:
 
-1. One-note cross-instrument comparison
-2. Short polyphonic fragment with event-count alignment
-3. Same-note / different-instrument separation case
+1. one-note cross-instrument comparison
+2. short polyphonic fragment with event-count alignment
+3. short ensemble window with layered instrument-role assignment
 
-Current included example:
+Current included examples:
 
-- `same-note-banjo-vs-guitar` — compact same-note comparison on canonical note `8.8-`
-- `bach-polyphonic-research-snapshot` — short Bach fragment with explicit `ongoing research` status
+- `same-note-banjo-vs-guitar` - compact same-note comparison on canonical note `8.8-`
+- `bach-polyphonic-research-snapshot` - short Bach fragment with explicit `ongoing research` status
+- `ave-maria-ensemble-role-snapshot` - short ensemble snapshot with layered instrument roles
 
 Each example should contain:
 

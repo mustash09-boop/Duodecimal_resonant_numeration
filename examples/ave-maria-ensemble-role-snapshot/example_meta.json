@@ -1,0 +1,41 @@
+{
+  "name": "ave-maria-ensemble-role-snapshot",
+  "status": "ongoing research",
+  "window_sec": [
+    80.0,
+    90.0
+  ],
+  "window_frames60": [
+    4800,
+    5400
+  ],
+  "audio_source": "Block001_data/Ave_Maria/00_sources/audio/ave_maria_gounod_mono_44100_s16.wav",
+  "audio_clip": "examples/ave-maria-ensemble-role-snapshot/audio/ave_maria_fragment_80s_90s.wav",
+  "midi_events": 142,
+  "layered_events": 108,
+  "role_mapped_events": 108,
+  "midi_track_counts": {
+    "Cello 2": 8,
+    "Cello": 15,
+    "Organ-Bass": 2,
+    "Piano-Treble": 80,
+    "Organ-Treble": 22,
+    "Violin": 15
+  },
+  "dominant_instrument_counts": {
+    "UNRESOLVED_FIELD": 18,
+    "cello": 36,
+    "organ": 31,
+    "piano": 23
+  },
+  "role_pattern_counts": {
+    "UNRESOLVED_FIELD_EVENT": 3,
+    "BODY_RETURN_EVENT": 44,
+    "INTERNAL_WAVE_EVENT": 46,
+    "PIANO_PRIMARY_WITH_FALSE_CELLO_SUPPORT": 1,
+    "PRIMARY_WITH_SUPPORT_EVENT": 6,
+    "PRIMARY_SINGLE_OWNER_EVENT": 2,
+    "PIANO_ATTACK_EVENT": 2,
+    "FIELD_TRACE_EVENT": 4
+  }
+}
