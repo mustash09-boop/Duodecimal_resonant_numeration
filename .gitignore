@@ -67,6 +67,10 @@ py/**/__pycache__/
 tools/**/__pycache__/
 py/music12/blocks/Block002_audio_recogn/_archive_pre_micro/
 py/music12/blocks/Block002_audio_recogn/_deprecated_2026_05_11/
+py/music12/blocks/Block002_audio_recogn/BLOCK002_AUDIT_BY_DATE.txt
+py/music12/blocks/Block002_audio_recogn/batch_high_register_runner.py
+py/music12/blocks/Block002_audio_recogn/batch_probe_scan_from_list_cli.py
+py/music12/blocks/Block002_audio_recogn/collect_high_register_summary_cli.py
 tools/backup_codex_state.ps1
 tools/maxwell_snapshot.py
 tools/project_snapshot.py
