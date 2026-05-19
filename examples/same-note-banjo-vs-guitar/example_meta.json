@@ -1,0 +1,18 @@
+{
+  "example_id": "same-note-banjo-vs-guitar",
+  "example_type": "single_note_cross_instrument_compare",
+  "canonical_note12": "8.8-",
+  "source_note_label": "G3",
+  "instruments": [
+    "banjo",
+    "guitar"
+  ],
+  "source_audio_files": [
+    "audio/banjo_G3_very-long_forte_normal.wav",
+    "audio/guitar_G3_very-long_forte_normal.wav"
+  ],
+  "comparison_files": [
+    "compare/note_compare__8.8-.csv",
+    "compare/note_compare__8.8-.md"
+  ]
+}
