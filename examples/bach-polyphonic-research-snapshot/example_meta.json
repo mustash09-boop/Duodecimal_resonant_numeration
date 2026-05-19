@@ -1,0 +1,19 @@
+{
+  "example_id": "bach-polyphonic-research-snapshot",
+  "example_type": "polyphonic_event_research_snapshot",
+  "status": "ongoing_research",
+  "source_audio": "audio/bach_midi_render_fragment_6p5s_11p5s.wav",
+  "window_seconds": {
+    "start": 6.5,
+    "end": 11.5,
+    "duration": 5.0
+  },
+  "included_reference_files": [
+    "reference/bach_fragment_midi_events.csv"
+  ],
+  "included_pipeline_files": [
+    "pipeline/bach_fragment_fused_events.csv",
+    "pipeline/bach_fragment_fused_onset_groups.csv",
+    "pipeline/bach_fragment_summary.txt"
+  ]
+}

@@ -11,6 +11,7 @@ Recommended first public cases:
 Current included example:
 
 - `same-note-banjo-vs-guitar` — compact same-note comparison on canonical note `8.8-`
+- `bach-polyphonic-research-snapshot` — short Bach fragment with explicit `ongoing research` status
 
 Each example should contain:
 

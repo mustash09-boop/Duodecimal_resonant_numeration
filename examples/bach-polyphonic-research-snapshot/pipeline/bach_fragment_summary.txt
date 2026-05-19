@@ -1,0 +1,12 @@
+BACH POLYPHONIC RESEARCH SNAPSHOT
+========================================================================
+window_sec: 6.500..11.500
+window_frame60: 390..690
+midi_events: 59
+midi_onset_groups: 41
+fused_events: 45
+fused_onset_groups: 27
+fused_kind_counts:
+  ambient_field_residue: 11
+  event_field_only: 12
+  notechain_backbone: 22
