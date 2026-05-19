@@ -11,3 +11,9 @@ Good candidates:
 
 Prefer compact PNG or SVG exports over large raw rendering folders.
 
+Current public image set:
+
+- `publication/same-note_banjo-vs-guitar.png`
+- `publication/same-note_cello-vs-violin.png`
+- `publication/same-note_bass-guitar-vs-piano.png`
+
