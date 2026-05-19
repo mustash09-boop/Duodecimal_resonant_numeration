@@ -1,0 +1,121 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local runtime and caches
+_long_runs/
+_matrix_cache/
+_temp_numpy/
+_demon_logs/
+_fix_logs/
+tmp/
+temp/
+*.tmp
+*.log
+
+# Large audio and binary artifacts
+*.wav
+*.flac
+*.mp3
+*.ogg
+*.aiff
+*.dat
+*.npy
+*.npz
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Research data trees stay local unless copied into examples/
+Block001_data/
+Block002_data/
+Block003_data/
+Block004_data/
+Block005_data/
+Laboratory_research/
+notes/
+ops/
+md/
+zenodo_release_v2/
+
+# Large generated reports and caches
+**/10_reports_*/
+**/10_reports*/
+**/_matrix_cache/
+**/_raw_event_snapshots/
+
+# Keep public small examples and docs
+!examples/**
+!images/**
+!manifests/**
+!docs/**
+!py/**
+!tools/**
+!links/**
+!papers/**
+
+# Office / editor noise
+~$*
+*.bak
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.docx
+
+# Local root noise files
+!README.md
+!LICENSE.md
+!.gitignore
+!.dockerignore
+!Dockerfile
+!requirements_cloud.txt
+!DUODECIMAL_NOTATION_AND_TIME60.md
+!PROJECT_TREE_CODE.txt
+!PROJECT_TREE_DIRS.txt
+!BACH_REPORTS_TREE.txt
+!block002_files.txt
+!core_files.txt
+!files_list.txt
+!RealPiano_1_one_note_files.txt
+!RealPiano_1_reports_dirs.txt
+!build_spiral3d_index_html.py
+!check_polyphony_counts.py
+!render_spiral3d_publication_png.py
+!render_spiral3d_publication_png_v2.py
+!filter_*_fixed_manifest.py
+!fix_cyrillic_abc_all_instruments.py
+!fix_cyrillic_abc_filenames.py
+!rename_realpiano_add_tag.py
+!copy_piano_midi1_clean.bat
+!copy_realpiano_reports_clean.bat
+!run_block004_passport_archive_app.bat
+!run_note_box_profiles_instruments.bat
+!run_percussion_convert.bat
+!run_percussion_manifest.bat
+
+# Ignore stray root files with note-like or temporary names
+\!NOTE!
++ 
+cd
+task_kind')
+test.csv
+test.json
+[0-9][0-9].[0-9A-C]-
+[0-9A-C].[0-9A-C]-
+\320*
+\321*
+заготовка временная
+строка
+Непредвиденная
+Отсутствует
+Отчёт после последней команды.txt
+Файлы для полного пайплайна.txt
