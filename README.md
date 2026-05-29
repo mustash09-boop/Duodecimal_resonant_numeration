@@ -14,6 +14,7 @@ an interpretable framework for resonance structure in complex signals.
 If you want a fast public tour, start here:
 
 - [One-note cross-instrument example](examples/same-note-banjo-vs-guitar/README.md)
+- [Block 4 isolated-note lineage snapshot](examples/block004-isolated-note-lineage-snapshot/README.md)
 - [Short Bach polyphonic research snapshot](examples/bach-polyphonic-research-snapshot/README.md)
 - [Short Ave Maria ensemble-role research snapshot](examples/ave-maria-ensemble-role-snapshot/README.md)
 - [Publication image gallery](images/publication/IMAGE_GALLERY.md)
@@ -113,13 +114,16 @@ The strongest initial public release is likely not the whole project at once,
 but a few compact cases:
 
 1. same note played by different instruments
-2. short polyphonic fragment with event-count reasoning
-3. one ensemble case with layered instrument-role assignment
+2. isolated-note lineage and morphology in Block 4
+3. short polyphonic fragment with event-count reasoning
+4. one ensemble case with layered instrument-role assignment
 
 ## Next public-release documents
 
 - [docs/PUBLIC_RELEASE_SNAPSHOT_V1.md](docs/PUBLIC_RELEASE_SNAPSHOT_V1.md)
 - [docs/GITHUB_PUBLIC_RELEASE_GUIDE.md](docs/GITHUB_PUBLIC_RELEASE_GUIDE.md)
+- [docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)
+- [docs/BLOCK004_PUBLIC_REPRO_GUIDE_EN.md](docs/BLOCK004_PUBLIC_REPRO_GUIDE_EN.md)
 - [manifests/PUBLIC_RELEASE_SCOPE_v1.md](manifests/PUBLIC_RELEASE_SCOPE_v1.md)
 - [links/CLOUD_AND_ARCHIVE_LINKS.md](links/CLOUD_AND_ARCHIVE_LINKS.md)
 

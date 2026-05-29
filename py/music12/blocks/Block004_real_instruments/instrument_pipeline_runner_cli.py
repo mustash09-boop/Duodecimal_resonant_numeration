@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import re
 import subprocess
 import sys
@@ -9,6 +10,7 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(r"E:\Duodecimal_resonant_numeration")
+PY_ROOT = PROJECT_ROOT / "py"
 
 
 def read_manifest(path: Path, layer: str) -> list[dict]:
@@ -46,7 +48,15 @@ def note_for_theory(note12: str) -> str:
 
 
 def run_cmd(cmd: list[str]) -> None:
-    subprocess.run(cmd, check=True, cwd=str(PROJECT_ROOT))
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH", "").strip()
+    py_root = str(PY_ROOT)
+    if existing:
+        if py_root not in existing.split(os.pathsep):
+            env["PYTHONPATH"] = py_root + os.pathsep + existing
+    else:
+        env["PYTHONPATH"] = py_root
+    subprocess.run(cmd, check=True, cwd=str(PROJECT_ROOT), env=env)
 
 
 def safe_tag(value: str) -> str:
@@ -336,6 +346,14 @@ def spiral3d_out_dir(args) -> Path:
     return Path(args.spiral3d_out_dir)
 
 
+def harmonic_chain_spiral3d_out_dir(args) -> Path:
+    return Path(args.harmonic_chain_spiral3d_out_dir)
+
+
+def harmonic_morphology_out_dir(args) -> Path:
+    return Path(args.harmonic_morphology_out_dir)
+
+
 def run_note_box_profile(args) -> None:
     out_root = note_box_out_dir(args)
     out_root.mkdir(parents=True, exist_ok=True)
@@ -373,6 +391,46 @@ def run_spiral3d(args) -> None:
     )
 
 
+def run_harmonic_chain_spiral3d(args) -> None:
+    out_root = harmonic_chain_spiral3d_out_dir(args)
+    out_root.mkdir(parents=True, exist_ok=True)
+
+    run_module(
+        "music12.blocks.Block004_real_instruments.harmonic_chain_spiral3d_builder_cli",
+        [
+            "--instrument_name", args.instrument_name,
+            "--spiral3d_dir", str(spiral3d_out_dir(args)),
+            "--out_dir", str(out_root),
+            "--max_frame_gap", args.harmonic_chain_max_frame_gap,
+            "--max_xy_distance", args.harmonic_chain_max_xy_distance,
+            "--time_weight", args.harmonic_chain_time_weight,
+            "--max_core_points_plot", args.harmonic_chain_max_core_points_plot,
+            "--max_note_box_points_plot", args.harmonic_chain_max_note_box_points_plot,
+            "--max_residual_points_plot", args.harmonic_chain_max_residual_points_plot,
+            "--max_unassigned_points_plot", args.harmonic_chain_max_unassigned_points_plot,
+        ],
+        args,
+        "harmonic_chain_spiral3d",
+    )
+
+
+def run_harmonic_morphology_compare(args) -> None:
+    out_root = harmonic_morphology_out_dir(args)
+    out_root.mkdir(parents=True, exist_ok=True)
+
+    run_module(
+        "music12.blocks.Block004_real_instruments.harmonic_morphology_compare_cli",
+        [
+            "--html", args.harmonic_morphology_html,
+            "--outdir", str(out_root),
+            "--time-grid", args.harmonic_morphology_time_grid,
+            "--max-harmonic", args.harmonic_morphology_max_harmonic,
+        ],
+        args,
+        "harmonic_morphology_compare",
+    )
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Universal phased instrument pipeline runner.")
 
@@ -384,7 +442,7 @@ def main() -> None:
     ap.add_argument("--layer", default="01_core_notes")
     ap.add_argument(
         "--stages",
-        default="dense,chain,root,box,box_split,clean_box,dense_vs_theory,spiral12,note_box_profile,spiral3d,relation,passport",
+        default="dense,chain,root,box,box_split,clean_box,dense_vs_theory,spiral12,note_box_profile,spiral3d,harmonic_chain_spiral3d,relation,passport",
     )
 
     ap.add_argument("--box_csv", default="")
@@ -393,6 +451,9 @@ def main() -> None:
     ap.add_argument("--passport_out_dir", default="")
     ap.add_argument("--note_box_out_dir", default="")
     ap.add_argument("--spiral3d_out_dir", default="")
+    ap.add_argument("--harmonic_chain_spiral3d_out_dir", default="")
+    ap.add_argument("--harmonic_morphology_html", default="")
+    ap.add_argument("--harmonic_morphology_out_dir", default="")
     ap.add_argument(
         "--theoretical_csv",
         default=r"E:\Duodecimal_resonant_numeration\py\music12\core\reference_theoretical_harmonics12.csv",
@@ -427,6 +488,15 @@ def main() -> None:
     ap.add_argument("--note_box_harmonic_tolerance_cents", default="18.0")
     ap.add_argument("--note_box_min_presence_ratio", default="0.05")
     ap.add_argument("--note_box_min_frame_count", default="2")
+    ap.add_argument("--harmonic_chain_max_frame_gap", default="4")
+    ap.add_argument("--harmonic_chain_max_xy_distance", default="1.8")
+    ap.add_argument("--harmonic_chain_time_weight", default="0.15")
+    ap.add_argument("--harmonic_chain_max_core_points_plot", default="900")
+    ap.add_argument("--harmonic_chain_max_note_box_points_plot", default="240")
+    ap.add_argument("--harmonic_chain_max_residual_points_plot", default="180")
+    ap.add_argument("--harmonic_chain_max_unassigned_points_plot", default="220")
+    ap.add_argument("--harmonic_morphology_time_grid", default="240")
+    ap.add_argument("--harmonic_morphology_max_harmonic", default="24")
 
     ap.add_argument("--use_maxwell", action="store_true")
     ap.add_argument("--maxwell_logdir", default="_demon_logs")
@@ -444,6 +514,10 @@ def main() -> None:
         args.note_box_out_dir = str(reports_root.parent / "30_note_box_profiles")
     if not args.spiral3d_out_dir:
         args.spiral3d_out_dir = str(reports_root.parent / "50_spiral3d")
+    if not args.harmonic_chain_spiral3d_out_dir:
+        args.harmonic_chain_spiral3d_out_dir = str(reports_root.parent / "55_harmonic_chain_spiral3d")
+    if not args.harmonic_morphology_out_dir:
+        args.harmonic_morphology_out_dir = str(reports_root.parent / "90_harmonic_morphology_compare")
     if not args.box_csv:
         args.box_csv = str(Path(args.box_out_dir) / f"{args.instrument_name}__dense_frequency_clusters.csv")
 
@@ -460,6 +534,10 @@ def main() -> None:
     print(f"Passport  : {args.passport_out_dir}")
     print(f"Note box  : {args.note_box_out_dir}")
     print(f"Spiral3D  : {args.spiral3d_out_dir}")
+    print(f"HChain3D  : {args.harmonic_chain_spiral3d_out_dir}")
+    if args.harmonic_morphology_html:
+        print(f"HMorphHTML: {args.harmonic_morphology_html}")
+        print(f"HMorphOut : {args.harmonic_morphology_out_dir}")
     print(f"Maxwell   : {bool(args.use_maxwell)}")
 
     # PHASE 1: dense + chain
@@ -564,6 +642,13 @@ def main() -> None:
         print("\n=== PHASE 7: SPIRAL 3D ===")
         run_spiral3d(args)
 
+    if "harmonic_chain_spiral3d" in stages:
+        print("\n=== PHASE 7B: HARMONIC CHAIN SPIRAL 3D ===")
+        if not spiral3d_out_dir(args).exists():
+            print(f"[MISSING SPIRAL3D DIR] {spiral3d_out_dir(args)}")
+        else:
+            run_harmonic_chain_spiral3d(args)
+
     if "relation" in stages:
         print("\n=== PHASE 8: BOX HARMONIC RELATION ===")
         run_box_relation(args)
@@ -571,6 +656,15 @@ def main() -> None:
     if "passport" in stages:
         print("\n=== PHASE 9: PASSPORT ===")
         run_passport(args)
+
+    if "harmonic_morphology_compare" in stages:
+        print("\n=== PHASE 10: HARMONIC MORPHOLOGY COMPARE ===")
+        if not args.harmonic_morphology_html:
+            print("[MISSING HTML] use --harmonic_morphology_html with a Plotly harmonic amplitude compare HTML")
+        elif not Path(args.harmonic_morphology_html).exists():
+            print(f"[MISSING HTML FILE] {args.harmonic_morphology_html}")
+        else:
+            run_harmonic_morphology_compare(args)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+Block 4 isolated-note lineage snapshot
+======================================
+
+Status: ongoing research
+
+Primary isolated note
+---------------------
+Instrument: RealPiano_1_1
+Note file : 001_piano_real_5.A-.wav
+
+Per-note lineage counts
+-----------------------
+points                   = 25244
+harmonic_core_points     = 267
+spawned_note_box_points  = 2695
+spawned_residual_points  = 2937
+unassigned_points        = 19345
+assigned_harmonics       = 1 2 3 4 5 6 7 8 9 10 12
+
+Whole-instrument lineage summary
+--------------------------------
+notes_built              = 88
+total_points             = 5105037
+total_unassigned_points  = 2742313
+unassigned_ratio         = 0.5371778892
+
+Cross-instrument morphology summary for note 9.5-
+-------------------------------------------------
+RealPiano_1_1 vs cello   = 0.421838
+RealPiano_1_1 vs violin  = 0.413130
+cello vs violin          = 0.292048
+
+Interpretive conclusion
+-----------------------
+1. The isolated note does not collapse into one clean tone plus a meaningless tail.
+2. Harmonic cores, note-box growth, residual growth, and unresolved continuations coexist.
+3. The unresolved layer is too large and too organized to be dismissed as empty noise.
+4. Strings are morphologically closer to each other than either is to piano.
+5. This supports the Block 4 claim that isolated-note audio is a causal resonance system.
+

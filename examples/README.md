@@ -11,6 +11,7 @@ Recommended first public cases:
 Current included examples:
 
 - `same-note-banjo-vs-guitar` - compact same-note comparison on canonical note `8.8-`
+- `block004-isolated-note-lineage-snapshot` - compact isolated-note causal-lineage and morphology checkpoint
 - `bach-polyphonic-research-snapshot` - short Bach fragment with explicit `ongoing research` status
 - `ave-maria-ensemble-role-snapshot` - short ensemble snapshot with layered instrument roles
 

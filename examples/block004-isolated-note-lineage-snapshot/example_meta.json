@@ -1,0 +1,24 @@
+{
+  "name": "block004-isolated-note-lineage-snapshot",
+  "status": "ongoing research",
+  "scope": "compact public Block 4 example for isolated real notes",
+  "primary_instrument": "RealPiano_1_1",
+  "primary_note": "001_piano_real_5.A-",
+  "compare_note": "9.5-",
+  "included_audio_files": 1,
+  "included_lineage_visuals": 2,
+  "included_compare_visuals": 3,
+  "included_compare_tables": 3,
+  "main_claims": [
+    "isolated real notes contain structured harmonic lineage",
+    "cross-instrument harmonic morphology differs systematically",
+    "unassigned resonance should not be reduced to empty noise"
+  ],
+  "entry_docs": [
+    "README.md",
+    "HOW_TO_RUN.md",
+    "../../docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md",
+    "../../docs/BLOCK004_PUBLIC_REPRO_GUIDE_EN.md"
+  ]
+}
+
