@@ -82,5 +82,4 @@ This is a useful public checkpoint because it shows that:
 4. inspect the morphology summary CSV;
 5. read the compact summary text;
 6. then continue to the full research text:
-   - [docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](/E:/Duodecimal_resonant_numeration/docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)
-
+   - [docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](../../docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)

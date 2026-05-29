@@ -62,14 +62,14 @@ Block004_data/<instrument_name>/
 
 Typical real examples already present in this project:
 
-- [RealPiano_1_1](/E:/Duodecimal_resonant_numeration/Block004_data/RealPiano_1_1)
-- [cello](/E:/Duodecimal_resonant_numeration/Block004_data/cello)
-- [violin](/E:/Duodecimal_resonant_numeration/Block004_data/violin)
-- [piano_midi1](/E:/Duodecimal_resonant_numeration/Block004_data/piano_midi1)
+- [RealPiano_1_1](../Block004_data/RealPiano_1_1)
+- [cello](../Block004_data/cello)
+- [violin](../Block004_data/violin)
+- [piano_midi1](../Block004_data/piano_midi1)
 
 If you are working from the public repository alone, use the compact public
 example first, then connect it to the full offline corpora described in
-[links/CLOUD_AND_ARCHIVE_LINKS.md](/E:/Duodecimal_resonant_numeration/links/CLOUD_AND_ARCHIVE_LINKS.md)
+[links/CLOUD_AND_ARCHIVE_LINKS.md](../links/CLOUD_AND_ARCHIVE_LINKS.md)
 and the Zenodo records linked from the main README.
 
 ---
@@ -78,7 +78,7 @@ and the Zenodo records linked from the main README.
 
 For a compact reproducible path, use:
 
-- [examples/block004-isolated-note-lineage-snapshot/README.md](/E:/Duodecimal_resonant_numeration/examples/block004-isolated-note-lineage-snapshot/README.md)
+- [examples/block004-isolated-note-lineage-snapshot/README.md](../examples/block004-isolated-note-lineage-snapshot/README.md)
 
 That example shows:
 
@@ -94,7 +94,7 @@ That example shows:
 
 This repository now includes a lightweight wrapper:
 
-- [run_block004_public_research_snapshot.py](/E:/Duodecimal_resonant_numeration/tools/run_block004_public_research_snapshot.py)
+- [run_block004_public_research_snapshot.py](../tools/run_block004_public_research_snapshot.py)
 
 It helps outside researchers run the existing Block 4 runner without manually
 reassembling every path.
@@ -121,7 +121,7 @@ This wrapper auto-detects:
 
 Internally it calls:
 
-- [instrument_pipeline_runner_cli.py](/E:/Duodecimal_resonant_numeration/py/music12/blocks/Block004_real_instruments/instrument_pipeline_runner_cli.py)
+- [instrument_pipeline_runner_cli.py](../py/music12/blocks/Block004_real_instruments/instrument_pipeline_runner_cli.py)
 
 The default stage list is:
 
@@ -157,7 +157,7 @@ tonal instrument passport.
 
 For cross-instrument harmonic behavior, use:
 
-- [harmonic_morphology_compare_cli.py](/E:/Duodecimal_resonant_numeration/py/music12/blocks/Block004_real_instruments/harmonic_morphology_compare_cli.py)
+- [harmonic_morphology_compare_cli.py](../py/music12/blocks/Block004_real_instruments/harmonic_morphology_compare_cli.py)
 
 or call it through the same wrapper with:
 
@@ -231,11 +231,10 @@ This is one of the most important public conclusions of Block 4.
 For an outside researcher, the best order is:
 
 1. [README.md](/E:/Duodecimal_resonant_numeration/README.md)
-2. [examples/block004-isolated-note-lineage-snapshot/README.md](/E:/Duodecimal_resonant_numeration/examples/block004-isolated-note-lineage-snapshot/README.md)
-3. [BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](/E:/Duodecimal_resonant_numeration/docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)
+2. [examples/block004-isolated-note-lineage-snapshot/README.md](../examples/block004-isolated-note-lineage-snapshot/README.md)
+3. [BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)
 4. this reproducibility guide
 5. the wrapper script and example commands
 
 That sequence should be enough to verify that Block 4 is a working research
 pipeline and not just a collection of disconnected plots.
-

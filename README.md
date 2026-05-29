@@ -19,6 +19,16 @@ If you want a fast public tour, start here:
 - [Short Ave Maria ensemble-role research snapshot](examples/ave-maria-ensemble-role-snapshot/README.md)
 - [Publication image gallery](images/publication/IMAGE_GALLERY.md)
 
+## Visual snapshots
+
+Same note, different instruments:
+
+![Same note, different instruments](images/publication/same-note_banjo-vs-guitar.png)
+
+Block 4 harmonic morphology checkpoint:
+
+![Block 4 harmonic morphology profile](examples/block004-isolated-note-lineage-snapshot/compare/harmonic_amplitude_compare__9.5-__profile.png)
+
 ## Research status
 
 This repository is an active research lab, not a finished product. Some
@@ -121,6 +131,7 @@ but a few compact cases:
 ## Next public-release documents
 
 - [docs/PUBLIC_RELEASE_SNAPSHOT_V1.md](docs/PUBLIC_RELEASE_SNAPSHOT_V1.md)
+- [docs/PUBLIC_RELEASE_SNAPSHOT_V2.md](docs/PUBLIC_RELEASE_SNAPSHOT_V2.md)
 - [docs/GITHUB_PUBLIC_RELEASE_GUIDE.md](docs/GITHUB_PUBLIC_RELEASE_GUIDE.md)
 - [docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md](docs/BLOCK004_REAL_INSTRUMENTS_RESEARCH_EN.md)
 - [docs/BLOCK004_PUBLIC_REPRO_GUIDE_EN.md](docs/BLOCK004_PUBLIC_REPRO_GUIDE_EN.md)
