@@ -19,6 +19,8 @@ import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from music12.core.pdf_spiral12_xy import angle_for_step, STEPS
+
 
 def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
@@ -135,9 +137,9 @@ def save_note_box_spiral_png(note_name, root_hz, points_df, box_df, out_dir, tol
         circle = plt.Circle((0, 0), r, fill=False, linewidth=0.4, alpha=0.25)
         ax.add_patch(circle)
 
-    # Лучи 12 ступеней
-    for i in range(12):
-        angle = i * (2.0 * math.pi / 12.0)
+    # Лучи 12 ступеней по corrected PDF-геометрии
+    for step in STEPS:
+        angle = math.radians(angle_for_step(step))
         plt.plot(
             [0, 15 * math.cos(angle)],
             [0, 15 * math.sin(angle)],

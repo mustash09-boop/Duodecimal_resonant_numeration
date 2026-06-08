@@ -1,0 +1,10 @@
+CORRECTED SPIRAL REFERENCE EXPORT
+================================================================================
+svg_main: E:\Duodecimal_resonant_numeration\docs\duodecimal_resonance_spiral_corrected.svg
+svg_micro: E:\Duodecimal_resonant_numeration\docs\microshift_segment_9_9_to_9_A_corrected.svg
+csv_main: E:\Duodecimal_resonant_numeration\docs\duodecimal_resonance_spiral_corrected.csv
+csv_micro: E:\Duodecimal_resonant_numeration\docs\microshift_segment_9_9_to_9_A_corrected.csv
+main_token_count: 49
+micro_point_count: 13
+sectors_12_deg: [21.406714, 22.679623, 24.028224, 25.457017, 26.97077, 28.574535, 30.273665, 32.073831, 33.98104, 36.001658, 38.142428, 40.410495]
+A_offset_deg: 245.445418982674

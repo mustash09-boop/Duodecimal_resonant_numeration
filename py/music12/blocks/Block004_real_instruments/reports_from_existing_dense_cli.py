@@ -26,6 +26,8 @@ import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from music12.core.pdf_spiral12_xy import pdf_spiral_xy_from_frequency, pdf_spiral_xy_from_token
+
 
 DIGITS12 = "123456789ABC"
 
@@ -83,26 +85,6 @@ def cents_diff(hz1, hz2):
     if hz1 <= 0 or hz2 <= 0:
         return 9999.0
     return 1200.0 * math.log2(hz1 / hz2)
-
-
-def token_to_spiral_xy(token):
-    token = str(token).strip()
-    clean = token.split("'")[0].replace("-", "")
-
-    if "." not in clean:
-        return None
-
-    try:
-        octave_s, degree_s = clean.split(".", 1)
-        octave = int(octave_s)
-        degree = DIGITS12.index(degree_s[0]) + 1
-    except Exception:
-        return None
-
-    angle = (degree - 1) * (2.0 * math.pi / 12.0)
-    radius = octave + degree / 12.0
-
-    return radius * math.cos(angle), radius * math.sin(angle)
 
 
 def estimate_root_from_dense(df):
@@ -176,23 +158,42 @@ def save_root_summary(path, root_hz, root_token, df):
             f.write(f"unique_frame_count              : {df['frame_idx'].nunique()}\n")
 
 
-def save_spiral(df, out_csv, out_png):
+def save_spiral(df, out_csv, out_png, anchor_token, anchor_hz):
     rows = []
 
     for _, r in df.iterrows():
-        xy = token_to_spiral_xy(r.get("note_token", ""))
+        freq_hz = float(r.get("hz", 0.0))
+        note_token = str(r.get("note_token", ""))
+        coords = None
 
-        if not xy:
+        if freq_hz > 0:
+            coords = pdf_spiral_xy_from_frequency(
+                freq_hz,
+                anchor_token=anchor_token,
+                anchor_hz=float(anchor_hz),
+            ).as_dict()
+        elif note_token:
+            token_pos = pdf_spiral_xy_from_token(note_token, anchor_token=anchor_token)
+            coords = token_pos.as_dict() if token_pos else None
+
+        if not coords:
             continue
 
         rows.append({
             "time_sec": float(r.get("time_sec", 0.0)),
             "frame_idx": int(r.get("frame_idx", 0)) if "frame_idx" in df.columns else 0,
-            "x12": float(xy[0]),
-            "y12": float(xy[1]),
-            "freq_hz": float(r.get("hz", 0.0)),
+            "x12": float(coords["x12"]),
+            "y12": float(coords["y12"]),
+            "freq_hz": freq_hz,
             "amplitude": float(r.get("amp", 0.0)),
-            "note_token": str(r.get("note_token", "")),
+            "note_token": str(coords["note_token"] or note_token),
+            "semitone_offset": float(coords["semitone_offset"]),
+            "abs_step_float": float(coords["abs_step_float"]),
+            "octave_float": float(coords["octave_float"]),
+            "degree12_float": float(coords["degree12_float"]),
+            "phase12_deg": float(coords["phase12_deg"]),
+            "phase12_rad": float(coords["phase12_rad"]),
+            "radial_level": float(coords["radial_level"]),
         })
 
     spiral_df = pd.DataFrame(rows)
@@ -217,7 +218,7 @@ def save_spiral(df, out_csv, out_png):
     plt.close()
 
 
-def process_note_dir(note_dir):
+def process_note_dir(note_dir, anchor_token, anchor_hz):
     dense_path = find_dense_file(note_dir)
 
     if not dense_path:
@@ -296,6 +297,8 @@ def process_note_dir(note_dir):
         df,
         os.path.join(note_dir, f"{prefix}__spiral12_clean_points.csv"),
         os.path.join(note_dir, f"{prefix}__spiral12_clean.png"),
+        anchor_token,
+        anchor_hz,
     )
 
     return True
@@ -304,6 +307,8 @@ def process_note_dir(note_dir):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--reports_root", required=True)
+    ap.add_argument("--anchor_token", default="9.A-")
+    ap.add_argument("--anchor_hz", type=float, default=440.0)
     args = ap.parse_args()
 
     ok = 0
@@ -315,7 +320,7 @@ def main():
         if not os.path.isdir(note_dir):
             continue
 
-        if process_note_dir(note_dir):
+        if process_note_dir(note_dir, args.anchor_token, args.anchor_hz):
             ok += 1
         else:
             skipped += 1

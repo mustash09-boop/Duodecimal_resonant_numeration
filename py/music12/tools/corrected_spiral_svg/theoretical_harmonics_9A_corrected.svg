@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1200" viewBox="0 0 1800 1200">
+<rect width="1800" height="1200" fill="white"/>
+<text x="900.00" y="45.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="31" font-weight="bold" fill="#111" text-anchor="middle">THEORETICAL HARMONICS OF 9.A&#x27;- ON THE 12-TONE RESONANCE SPIRAL</text>
+<text x="900.00" y="82.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="normal" fill="#111" text-anchor="middle">A = 440 Hz — harmonic positions expressed in duodecimal notation with 144-level microshifts</text>
+<line x1="555.00" y1="610.00" x2="741.38" y2="146.03" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="754.05" y="114.48" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">1</text>
+<line x1="555.00" y1="610.00" x2="396.14" y2="135.91" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="385.34" y="103.67" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">2</text>
+<line x1="555.00" y1="610.00" x2="137.25" y2="335.25" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="108.85" y="316.57" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">3</text>
+<line x1="555.00" y1="610.00" x2="55.54" y2="633.28" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="21.58" y="634.87" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">4</text>
+<line x1="555.00" y1="610.00" x2="153.85" y2="908.46" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="126.57" y="928.76" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">5</text>
+<line x1="555.00" y1="610.00" x2="373.57" y2="1075.92" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="361.23" y="1107.60" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">6</text>
+<line x1="555.00" y1="610.00" x2="633.20" y2="1103.85" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="638.51" y="1137.43" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">7</text>
+<line x1="555.00" y1="610.00" x2="859.88" y2="1006.29" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="880.61" y="1033.24" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">8</text>
+<line x1="555.00" y1="610.00" x2="1006.45" y2="824.92" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="1037.15" y="839.53" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">9</text>
+<line x1="555.00" y1="610.00" x2="1055.00" y2="610.00" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="1089.00" y="610.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">A</text>
+<line x1="555.00" y1="610.00" x2="1011.67" y2="406.41" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="1042.73" y="392.56" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">B</text>
+<line x1="555.00" y1="610.00" x2="897.86" y2="246.07" stroke="#bbbbbb" stroke-width="1" opacity="0.6" stroke-dasharray="4 4"/>
+<text x="921.17" y="221.32" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" fill="#444" text-anchor="middle">C</text>
+<line x1="555.00" y1="610.00" x2="1100.00" y2="610.00" stroke="#111" stroke-width="2" opacity="1"/>
+<line x1="555.00" y1="610.00" x2="555.00" y2="65.00" stroke="#111" stroke-width="2" opacity="1"/>
+<text x="1125.00" y="618.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="bold" fill="#111" text-anchor="middle">x12</text>
+<text x="555.00" y="50.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="bold" fill="#111" text-anchor="middle">y12</text>
+<circle cx="561.85" cy="592.95" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="548.65" cy="591.04" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="536.85" cy="598.06" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="531.48" cy="611.10" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="534.56" cy="625.21" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="545.01" cy="635.65" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="559.64" cy="639.33" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="574.51" cy="635.36" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="586.09" cy="624.80" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="592.02" cy="610.00" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="591.31" cy="593.81" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="584.25" cy="578.96" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="572.04" cy="567.57" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="539.44" cy="563.56" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="511.20" cy="581.19" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="498.99" cy="612.61" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="506.91" cy="645.78" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="531.76" cy="669.67" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="565.69" cy="677.54" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="599.50" cy="667.84" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="625.30" cy="643.46" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="638.02" cy="610.00" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="635.82" cy="573.97" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="619.65" cy="541.37" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="592.43" cy="516.81" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="521.03" cy="508.61" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="459.90" cy="547.45" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="434.01" cy="615.64" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="451.61" cy="686.92" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="505.27" cy="737.72" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="577.79" cy="753.95" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="649.48" cy="732.81" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="703.70" cy="680.79" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="730.02" cy="610.00" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="724.85" cy="534.28" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="690.46" cy="466.21" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="633.22" cy="415.29" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="484.20" cy="398.70" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="357.30" cy="479.97" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="304.04" cy="621.70" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="341.02" cy="769.20" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="452.27" cy="873.81" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="601.99" cy="906.77" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="749.43" cy="862.73" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="860.51" cy="755.44" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="914.02" cy="610.00" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="902.89" cy="454.90" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<circle cx="832.09" cy="315.88" r="3.50" fill="#b5b5b5" stroke="#b5b5b5" stroke-width="1" opacity="0.75"/>
+<path d="M 592.02 610.00 L 638.02 610.00 L 451.61 686.92 L 730.02 610.00 L 522.85 392.85 L 341.02 769.20 L 689.73 890.38 L 914.02 610.00 L 832.09 315.88 L 489.38 166.81 L 85.87 454.56 L 119.84 933.77" fill="none" stroke="#9a65c7" stroke-width="2.4" opacity="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="592.02" cy="610.00" r="9.00" fill="#d62728" stroke="white" stroke-width="2" opacity="1"/>
+<text x="592.02" y="614.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">1</text>
+<text x="615.02" y="610.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">9.A&#x27;-</text>
+<circle cx="638.02" cy="610.00" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="638.02" y="614.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">2</text>
+<text x="661.02" y="610.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">A.A&#x27;-</text>
+<circle cx="451.61" cy="686.92" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="451.61" y="690.92" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">3</text>
+<text x="433.16" y="700.65" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">B.5&#x27;-</text>
+<circle cx="730.02" cy="610.00" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="730.02" y="614.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">4</text>
+<text x="753.02" y="610.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">B.A&#x27;-</text>
+<circle cx="522.85" cy="392.85" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="522.85" y="396.85" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">5</text>
+<text x="519.48" y="370.10" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">C.2&#x27;a3</text>
+<circle cx="341.02" cy="769.20" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="341.02" y="773.20" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">6</text>
+<text x="322.57" y="782.93" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">C.5&#x27;-</text>
+<circle cx="689.73" cy="890.38" r="9.00" fill="#2c7fb8" stroke="white" stroke-width="2" opacity="1"/>
+<text x="689.73" y="894.38" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">7</text>
+<text x="699.70" y="911.11" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">C.8&#x27;a5</text>
+<circle cx="914.02" cy="610.00" r="9.00" fill="#2ca25f" stroke="white" stroke-width="2" opacity="1"/>
+<text x="914.02" y="614.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">8</text>
+<text x="937.02" y="610.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">C.A&#x27;-</text>
+<circle cx="832.09" cy="315.88" r="9.00" fill="#2ca25f" stroke="white" stroke-width="2" opacity="1"/>
+<text x="832.09" y="319.88" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">9</text>
+<text x="847.86" y="299.14" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">C.C&#x27;-</text>
+<circle cx="489.38" cy="166.81" r="9.00" fill="#2ca25f" stroke="white" stroke-width="2" opacity="1"/>
+<text x="489.38" y="170.81" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">10</text>
+<text x="486.01" y="144.06" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">11.2&#x27;a3</text>
+<circle cx="85.87" cy="454.56" r="9.00" fill="#2ca25f" stroke="white" stroke-width="2" opacity="1"/>
+<text x="85.87" y="458.56" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">11</text>
+<text x="64.04" y="447.33" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">11.4&#x27;a7</text>
+<circle cx="119.84" cy="933.77" r="9.00" fill="#2ca25f" stroke="white" stroke-width="2" opacity="1"/>
+<text x="119.84" y="937.77" font-family="DejaVu Sans, Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">12</text>
+<text x="101.39" y="947.50" font-family="DejaVu Sans, Arial, sans-serif" font-size="12" font-weight="normal" fill="#111" text-anchor="middle">11.5&#x27;-</text>
+<text x="532.02" y="638.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="bold" fill="#d62728" text-anchor="start">fundamental</text>
+<rect x="1180" y="115" width="520" height="620" rx="12" fill="white" stroke="#2f73c5" stroke-width="1.5"/>
+<text x="1230.00" y="180.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="start">HARMONIC POSITIONS</text>
+<text x="1230.00" y="225.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">1. 9.A&#x27;-</text>
+<text x="1230.00" y="249.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">2. A.A&#x27;-</text>
+<text x="1230.00" y="273.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">3. B.5&#x27;-</text>
+<text x="1230.00" y="297.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">4. B.A&#x27;-</text>
+<text x="1230.00" y="321.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">5. C.2&#x27;a3</text>
+<text x="1230.00" y="345.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">6. C.5&#x27;-</text>
+<text x="1230.00" y="369.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">7. C.8&#x27;a5</text>
+<text x="1230.00" y="393.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">8. C.A&#x27;-</text>
+<text x="1230.00" y="417.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">9. C.C&#x27;-</text>
+<text x="1230.00" y="441.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">10. 11.2&#x27;a3</text>
+<text x="1230.00" y="465.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">11. 11.4&#x27;a7</text>
+<text x="1230.00" y="489.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">12. 11.5&#x27;-</text>
+<rect x="1180" y="760" width="520" height="330" rx="12" fill="white" stroke="#2f73c5" stroke-width="1.5"/>
+<text x="1230.00" y="815.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="start">MAPPING RULE</text>
+<text x="1230.00" y="858.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Harmonic frequency:</text>
+<text x="1230.00" y="882.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">fₕ = h · 440 Hz</text>
+<text x="1230.00" y="906.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1230.00" y="930.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Spiral radius:</text>
+<text x="1230.00" y="954.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">r(s) = r₀ · (¹²√2)^s</text>
+<text x="1230.00" y="978.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1230.00" y="1002.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Angular geometry:</text>
+<text x="1230.00" y="1026.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">φₙ₊₁ = φₙ / ¹²√2</text>
+<text x="1230.00" y="1050.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Φₙ = 2(φₙ − φₙ₊₁)</text>
+<text x="1230.00" y="1074.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1230.00" y="1098.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Sectors are not equal 30° divisions.</text>
+<text x="1230.00" y="1122.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1230.00" y="1146.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">MICROSHIFT NOTATION</text>
+<text x="1230.00" y="1170.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">i = tendency toward the next pitch-class</text>
+<text x="1230.00" y="1194.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">a = tendency toward the previous pitch-class</text>
+<text x="1230.00" y="1218.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">i ≠ sharp (#), a ≠ flat (♭)</text>
+<text x="1230.00" y="1242.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">The note identity stays the same.</text>
+<text x="1230.00" y="1266.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="start">Only the resonance center is shifted.</text>
+<text x="900.00" y="1160.00" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="normal" fill="#111" text-anchor="middle">Numbers inside markers indicate harmonic order. Geometry corrected through φₙ₊₁ = φₙ / ¹²√2.</text>
+</svg>

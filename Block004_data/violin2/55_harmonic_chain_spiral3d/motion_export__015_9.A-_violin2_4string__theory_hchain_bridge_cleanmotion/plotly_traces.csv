@@ -1,0 +1,6 @@
+﻿trace_index,trace_name,material_name,rgb_r,rgb_g,rgb_b,point_count
+0,theory scaled 2D,theory_scaled_2D,0.4980392156862745,0.24705882352941178,0.7490196078431373,12
+1,bridge floor drift,bridge_floor_drift,0.7803921568627451,0.6274509803921569,1.0,168
+2,observed floor anchors,observed_floor_anchors,0.047058823529411764,0.596078431372549,0.8392156862745098,12
+3,bridge lift to time,bridge_lift_to_time,1.0,0.7019607843137254,0.2784313725490196,168
+4,lifted harmonic means,lifted_harmonic_means,0.12156862745098039,0.615686274509804,0.3333333333333333,12

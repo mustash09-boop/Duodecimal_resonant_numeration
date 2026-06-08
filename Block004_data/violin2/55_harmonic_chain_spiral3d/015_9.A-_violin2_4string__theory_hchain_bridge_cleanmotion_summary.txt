@@ -1,0 +1,23 @@
+CLEAN MOTION THEORY BRIDGE
+========================================================================
+html: E:\Duodecimal_resonant_numeration\Block004_data\violin2\55_harmonic_chain_spiral3d\015_9.A-_violin2_4string__theory_hchain_bridge_cleanmotion.html
+compare_csv: E:\Duodecimal_resonant_numeration\Block004_data\violin2\55_harmonic_chain_spiral3d\015_9.A-_violin2_4string__theory_hchain_bridge_cleanmotion_harmonic_compare.csv
+harmonics: 12
+
+scene_layers:
+  1. corrected theory scaled to observed radii
+  2. observed floor anchors
+  3. lifted harmonic means in time
+
+h1: theory=9.A'- -> observed=9.A'i3 delta_xy=0.0540
+h2: theory=A.A'- -> observed=A.A'i4 delta_xy=0.1329
+h3: theory=B.5'- -> observed=B.5'i4 delta_xy=0.3423
+h4: theory=B.A'- -> observed=B.A'i3 delta_xy=0.2880
+h5: theory=C.2'a3 -> observed=C.2'i2 delta_xy=0.9901
+h6: theory=C.5'- -> observed=C.5'i3 delta_xy=0.6303
+h7: theory=C.8'a5 -> observed=C.8'a2 delta_xy=0.9680
+h8: theory=C.A'- -> observed=C.A'i3 delta_xy=0.5692
+h9: theory=C.C'- -> observed=C.C'i4 delta_xy=0.6818
+h10: theory=11.2'a3 -> observed=11.2'i2 delta_xy=1.9225
+h11: theory=11.4'a7 -> observed=11.4'a4 delta_xy=1.7954
+h12: theory=11.5'- -> observed=11.5'i4 delta_xy=1.2892

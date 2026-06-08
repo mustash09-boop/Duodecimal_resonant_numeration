@@ -65,7 +65,10 @@ from music12.core.project_law_guard import (
 # Constants
 # ----------------------------------------------------------------------
 
-TOKEN_ZERO_PATTERN = re.compile(r"0")
+TOKEN_CANDIDATE_PATTERN = re.compile(
+    r"(?P<tok>[0-9A-C]+\.[0-9A-C]'(?:-|[ia][0-9A-C]+)?)",
+    flags=re.IGNORECASE,
+)
 DEFAULT_ENCODING = "utf-8"
 
 
@@ -158,7 +161,11 @@ def _contains_zero_token_text(text: str) -> bool:
     s = _safe_str(text)
     if not s:
         return False
-    return bool(TOKEN_ZERO_PATTERN.search(s))
+    for m in TOKEN_CANDIDATE_PATTERN.finditer(s):
+        tok = m.group("tok").upper()
+        if "0" in tok:
+            return True
+    return False
 
 
 def _series_nonempty_mask(series: pd.Series) -> pd.Series:

@@ -228,23 +228,29 @@ def load_matrix_csv_memmap(
     source_size_bytes = int(src_stat.st_size)
     source_mtime_ns = int(src_stat.st_mtime_ns)
 
-    probe_count, frame_count = _matrix_csv_shape(path)
-    shape = (int(probe_count), int(frame_count))
-
     cache_ok = False
+    shape: tuple[int, int] | None = None
 
     if dat_path.exists() and meta_path.exists() and not force_rebuild_cache:
         try:
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
-            cache_ok = (
-                tuple(meta.get("shape", [])) == shape
+            meta_shape = tuple(int(v) for v in meta.get("shape", []))
+            if len(meta_shape) == 2:
+                shape = (int(meta_shape[0]), int(meta_shape[1]))
+            cache_ok = bool(
+                shape
                 and str(meta.get("dtype", "")) == dtype_np.name
                 and int(meta.get("source_size_bytes", -1)) == source_size_bytes
                 and int(meta.get("source_mtime_ns", -1)) == source_mtime_ns
-                and dat_path.stat().st_size == probe_count * frame_count * dtype_np.itemsize
+                and dat_path.stat().st_size == int(shape[0]) * int(shape[1]) * dtype_np.itemsize
             )
         except Exception:
             cache_ok = False
+            shape = None
+
+    if shape is None:
+        probe_count, frame_count = _matrix_csv_shape(path)
+        shape = (int(probe_count), int(frame_count))
 
     if not cache_ok:
         matrix = np.memmap(dat_path, dtype=dtype_np, mode="w+", shape=shape)

@@ -12,6 +12,7 @@ from music12.core.spiral12_geometry import (
     SpiralPosition,
     parse_token_to_spiral,
 )
+from music12.core.notation12 import DIGITS12, int_to_bij12, normalize_letters
 
 
 # ============================================================
@@ -21,7 +22,7 @@ from music12.core.spiral12_geometry import (
 @dataclass(frozen=True)
 class ResonanceCoord:
     probe_index: int
-    octave: int
+    octave: str
     degree12_symbol: str
     degree12_index0: int
     subdivisions: tuple[str, ...]
@@ -52,7 +53,7 @@ class ResonanceFieldEvent:
     note_token: str
     spiral: SpiralPosition
 
-    octave: int
+    octave: str
     degree12_symbol: str
     degree12_index0: int
     subdivisions: tuple[str, ...]
@@ -150,6 +151,21 @@ def _safe_int(v: Any, default: int = 0) -> int:
         return default
 
 
+def _normalize_octave_symbol(v: Any) -> str:
+    s = normalize_letters(_safe_str(v)).upper()
+    if not s:
+        return ""
+    if all(ch in DIGITS12 for ch in s):
+        return s
+    try:
+        n = int(float(s))
+        if n >= 1:
+            return int_to_bij12(n)
+    except Exception:
+        pass
+    return ""
+
+
 def _load_json_list(raw: str) -> list[Any]:
     try:
         data = json.loads(raw or "[]")
@@ -212,7 +228,9 @@ def load_probe_coords_delta_csv(path: str | Path) -> list[ResonanceCoord]:
         reader = csv.DictReader(f)
         for row in reader:
             probe_index = _safe_int(row.get("probe_index", ""), len(coords))
-            octave = _safe_int(row.get("octave", ""), 0)
+            octave = _normalize_octave_symbol(row.get("octave", ""))
+            if not octave:
+                continue
 
             degree_raw = _safe_str(row.get("degree12", ""))
             degree12_symbol = degree_raw if degree_raw else "1"

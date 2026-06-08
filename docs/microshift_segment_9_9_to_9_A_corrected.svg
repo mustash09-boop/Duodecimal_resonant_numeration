@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1050" viewBox="0 0 1800 1050">
+<rect width="1800" height="1050" fill="white"/>
+<text x="900.00" y="45.00" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" fill="#111" text-anchor="middle">MICROSHIFT SEGMENT 9.9&#x27;- → 9.A&#x27;-</text>
+<text x="900.00" y="82.00" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="normal" fill="#111" text-anchor="middle">corrected geometry: microsteps follow ¹⁴⁴√2 inside the semitone sector</text>
+<polyline points="875.10,822.39 886.53,807.93 897.33,792.80 907.48,777.00 916.93,760.56 925.64,743.52 933.57,725.90 940.68,707.73 946.93,689.04 952.28,669.89 956.70,650.30 960.15,630.32 962.60,610.00" fill="none" stroke="#2d74bd" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="875.10" cy="822.39" r="10.00" fill="#111" stroke="white" stroke-width="1"/>
+<text x="915.10" y="830.39" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="start">9.9&#x27;-</text>
+<circle cx="962.60" cy="610.00" r="10.00" fill="#111" stroke="white" stroke-width="1"/>
+<text x="1002.60" y="602.00" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="start">9.A&#x27;-</text>
+<circle cx="886.53" cy="807.93" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="941.53" y="812.93" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i1</text>
+<circle cx="897.33" cy="792.80" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="952.33" y="797.80" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i2</text>
+<circle cx="907.48" cy="777.00" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="962.48" y="782.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i3</text>
+<circle cx="916.93" cy="760.56" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="971.93" y="765.56" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i4</text>
+<circle cx="925.64" cy="743.52" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="980.64" y="748.52" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i5</text>
+<circle cx="933.57" cy="725.90" r="7.00" fill="#d62728" stroke="white" stroke-width="1"/>
+<text x="988.57" y="730.90" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#d62728" text-anchor="start">9.9&#x27;i6</text>
+<circle cx="940.68" cy="707.73" r="7.00" fill="#1f77c9" stroke="white" stroke-width="1"/>
+<text x="995.68" y="712.73" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#1f77c9" text-anchor="start">9.A&#x27;a5</text>
+<circle cx="946.93" cy="689.04" r="7.00" fill="#1f77c9" stroke="white" stroke-width="1"/>
+<text x="1001.93" y="694.04" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#1f77c9" text-anchor="start">9.A&#x27;a4</text>
+<circle cx="952.28" cy="669.89" r="7.00" fill="#1f77c9" stroke="white" stroke-width="1"/>
+<text x="1007.28" y="674.89" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#1f77c9" text-anchor="start">9.A&#x27;a3</text>
+<circle cx="956.70" cy="650.30" r="7.00" fill="#1f77c9" stroke="white" stroke-width="1"/>
+<text x="1011.70" y="655.30" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#1f77c9" text-anchor="start">9.A&#x27;a2</text>
+<circle cx="960.15" cy="630.32" r="7.00" fill="#1f77c9" stroke="white" stroke-width="1"/>
+<text x="1015.15" y="635.32" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#1f77c9" text-anchor="start">9.A&#x27;a1</text>
+<rect x="1220" y="190" width="500" height="315" rx="12" fill="white" stroke="#2f73c5" stroke-width="1.5"/>
+<text x="1255.00" y="240.00" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#111" text-anchor="start">MICROSHIFT FORMULA</text>
+<text x="1255.00" y="285.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">μ = ¹⁴⁴√2</text>
+<text x="1255.00" y="313.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">μ¹² = ¹²√2</text>
+<text x="1255.00" y="341.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1255.00" y="369.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">Inside one semitone:</text>
+<text x="1255.00" y="397.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">rₙ₊₁ = rₙ · μ</text>
+<text x="1255.00" y="425.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start"></text>
+<text x="1255.00" y="453.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">Angular microsectors are also</text>
+<text x="1255.00" y="481.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">derived through μ and normalized</text>
+<text x="1255.00" y="509.00" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#111" text-anchor="start">inside the 9 → A sector.</text>
+</svg>

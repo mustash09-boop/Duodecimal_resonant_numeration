@@ -1,0 +1,11 @@
+THEORETICAL HARMONICS 9.A REFERENCE EXPORT
+================================================================================
+svg: E:\Duodecimal_resonant_numeration\py\music12\tools\corrected_spiral_svg\theoretical_harmonics_9A_corrected.svg
+csv: E:\Duodecimal_resonant_numeration\docs\theoretical_harmonics_9A_corrected.csv
+harmonic_count: 12
+anchor_token: 9.A'-
+omega: 1.059463094359295
+microshift_geometry: enabled
+microshift_rule: i=+n/12 of a semitone, a=-n/12 of a semitone
+first_harmonic: 9.A'- @ 0.000000000000 deg
+last_harmonic: 11.5'- @ 1296.650182692428 deg
