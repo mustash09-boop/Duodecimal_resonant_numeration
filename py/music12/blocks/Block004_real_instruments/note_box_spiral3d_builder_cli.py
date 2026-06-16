@@ -115,6 +115,720 @@ def harmonic_index_for_hz(hz, root_hz, tolerance_cents, harmonic_min=1, harmonic
     return None
 
 
+def thin_visual_layers(df, note_name=""):
+    if len(df) == 0:
+        return df
+
+    out_parts = []
+    chain = df[df["component_type"] == "chain"]
+    if len(chain) > 0:
+        out_parts.append(chain)
+
+    time_min = float(df["time_sec"].min())
+    time_max = float(df["time_sec"].max())
+    time_span = max(1e-9, time_max - time_min)
+    late_threshold = time_min + (2.0 * time_span / 3.0)
+    frame_min = int(df["frame_idx"].min())
+    frame_max = int(df["frame_idx"].max())
+    frame_span = max(1, frame_max - frame_min)
+    late_frame_threshold = frame_min + (2.0 * frame_span / 3.0)
+    cello2_tail_threshold = time_min + (time_span / 2.0)
+
+    is_bass_guitar = "_bass-guitar_" in str(note_name)
+    is_bass_guitar_1string = is_bass_guitar and "_1string" in str(note_name)
+    is_bass_guitar_3string = is_bass_guitar and "_3string" in str(note_name)
+    is_real_piano = "_piano_real_" in str(note_name)
+    is_banjo = str(note_name).startswith("banjo_")
+    is_banjo_soft = is_banjo and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+    )
+    is_banjo_very_long = is_banjo and ("_very-long_" in str(note_name) or "_long_" in str(note_name))
+    is_guitar2 = "_guitar2_" in str(note_name)
+    is_guitar2_1string = is_guitar2 and "_1string" in str(note_name)
+    is_guitar2_2string = is_guitar2 and "_2string" in str(note_name)
+    is_guitar = str(note_name).startswith("guitar_")
+    is_piano_midi1 = "_piano_midi_" in str(note_name)
+    is_mandolin = str(note_name).startswith("mandolin_")
+    is_mandolin_soft = is_mandolin and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+    )
+    is_mandolin_very_long = is_mandolin and ("_very-long_" in str(note_name) or "_long_" in str(note_name))
+    is_mandolin_tremolo = is_mandolin and "tremolo" in str(note_name)
+    is_bass_clarinet = str(note_name).startswith("bass-clarinet_")
+    is_bass_clarinet_phrase = is_bass_clarinet and "_phrase_" in str(note_name)
+    is_bassoon = str(note_name).startswith("bassoon_")
+    is_bassoon_phrase = is_bassoon and "_phrase_" in str(note_name)
+    is_french_horn = str(note_name).startswith("french-horn_")
+    is_french_horn_phrase = is_french_horn and "_phrase_" in str(note_name)
+    is_french_horn_soft = is_french_horn and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+    )
+    is_french_horn_long = is_french_horn and (
+        "_long_" in str(note_name) or "_very-long_" in str(note_name)
+    )
+    is_french_horn_gliss = is_french_horn and "glissando" in str(note_name)
+    is_french_horn_legato = is_french_horn_phrase and "legato" in str(note_name)
+    is_french_horn_nonlegato = is_french_horn_phrase and "nonlegato" in str(note_name)
+    is_french_horn_cresc = is_french_horn and (
+        "cresc-decresc" in str(note_name) or "decrescendo" in str(note_name) or "crescendo" in str(note_name)
+    )
+    is_flute = str(note_name).startswith("flute_")
+    is_flute_phrase = is_flute and "_phrase_" in str(note_name)
+    is_flute_soft = is_flute and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+    )
+    is_flute_very_long = is_flute and ("_very-long_" in str(note_name) or "_long_" in str(note_name))
+    is_flute_cresc = is_flute and ("cresc-decresc" in str(note_name) or "decresc-cresc" in str(note_name))
+    is_flute_staccato_like = is_flute_phrase and (
+        "_staccato" in str(note_name)
+        or "_staccatissimo" in str(note_name)
+        or "double-tonguing" in str(note_name)
+        or "nonlegato" in str(note_name)
+    )
+    is_oboe = str(note_name).startswith("oboe_")
+    is_oboe_phrase = is_oboe and "_phrase_" in str(note_name)
+    is_oboe_soft = is_oboe and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+    )
+    is_oboe_staccato_like = is_oboe_phrase and (
+        "_staccato" in str(note_name)
+        or "_staccatissimo" in str(note_name)
+        or "nonlegato" in str(note_name)
+        or "tongued-slur" in str(note_name)
+    )
+    is_saxophone = str(note_name).startswith("saxophone_")
+    is_saxophone_phrase = is_saxophone and "_phrase_" in str(note_name)
+    is_saxophone_soft = is_saxophone and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+        or "subtone" in str(note_name)
+    )
+    is_saxophone_cresc = is_saxophone and (
+        "cresc-decresc" in str(note_name)
+        or "decresc-cresc" in str(note_name)
+        or "crescendo" in str(note_name)
+        or "decrescendo" in str(note_name)
+    )
+    is_clarinet = str(note_name).startswith("clarinet_")
+    is_clarinet_phrase = is_clarinet and "_phrase_" in str(note_name)
+    is_contrabassoon = str(note_name).startswith("contrabassoon_")
+    is_contrabassoon_phrase = is_contrabassoon and "_phrase_" in str(note_name)
+    is_cor_anglais = str(note_name).startswith("english-horn_")
+    is_cor_anglais_phrase = is_cor_anglais and "_phrase_" in str(note_name)
+    is_cor_anglais_soft = is_cor_anglais and (
+        "_pianissimo_" in str(note_name) or "_mezzo-piano_" in str(note_name)
+    )
+    is_double_bass2 = "_double-bass2_" in str(note_name)
+    is_double_bass2_1string = is_double_bass2 and "_1string" in str(note_name)
+    is_double_bass2_3string = is_double_bass2 and "_3string" in str(note_name)
+    is_double_bass = str(note_name).startswith("double-bass_")
+    is_double_bass_phrase = is_double_bass and "_phrase_" in str(note_name)
+    is_double_bass_pizz = is_double_bass and "_pizz-" in str(note_name)
+    is_double_bass_soft = is_double_bass and (
+        "_piano_" in str(note_name)
+        or "_pianissimo_" in str(note_name)
+        or "_molto-pianissimo_" in str(note_name)
+        or "_mezzo-piano_" in str(note_name)
+    )
+    is_violin2 = "_violin2_" in str(note_name)
+    is_violin2_2string = is_violin2 and "_2string" in str(note_name)
+    is_violin2_3string = is_violin2 and "_3string" in str(note_name)
+    is_cello2 = "_cello2_" in str(note_name)
+    is_cello2_1string = "_cello2_1string" in str(note_name)
+    is_cello2_2string = "_cello2_2string" in str(note_name)
+
+    component_limits = [
+        ("note_box", 24, 12),
+        ("dense_other", 12, 6),
+    ]
+
+    if is_banjo:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_banjo_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_banjo_very_long:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_bass_guitar:
+        component_limits = [
+            ("note_box", 20, 8),
+            ("dense_other", 8, 1),
+        ]
+
+    if is_bass_guitar_1string or is_bass_guitar_3string:
+        component_limits = [
+            ("note_box", 16, 6),
+            ("dense_other", 7, 1),
+        ]
+
+    if is_real_piano:
+        component_limits = [
+            ("note_box", 18, 6),
+            ("dense_other", 10, 4),
+        ]
+
+    if is_guitar2:
+        component_limits = [
+            ("note_box", 16, 4),
+            ("dense_other", 6, 0),
+        ]
+
+    if is_guitar2_1string or is_guitar2_2string:
+        component_limits = [
+            ("note_box", 12, 2),
+            ("dense_other", 5, 0),
+        ]
+
+    if is_guitar:
+        component_limits = [
+            ("note_box", 12, 0),
+            ("dense_other", 6, 0),
+        ]
+
+    if is_piano_midi1:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_mandolin:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_mandolin_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_mandolin_very_long:
+        component_limits = [
+            ("note_box", 6, 0),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_mandolin_tremolo:
+        component_limits = [
+            ("note_box", 5, 0),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_bass_clarinet:
+        component_limits = [
+            ("note_box", 16, 4),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_bass_clarinet_phrase:
+        component_limits = [
+            ("note_box", 12, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_bassoon_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_french_horn:
+        component_limits = [
+            ("note_box", 12, 4),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_french_horn_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_french_horn_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_french_horn_long:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_french_horn_legato or is_french_horn_gliss:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_flute:
+        component_limits = [
+            ("note_box", 12, 4),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_flute_phrase:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_flute_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_flute_staccato_like:
+        component_limits = [
+            ("note_box", 6, 0),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_flute_very_long and not is_flute_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_oboe:
+        component_limits = [
+            ("note_box", 12, 3),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_oboe_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_oboe_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_oboe_staccato_like:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_saxophone:
+        component_limits = [
+            ("note_box", 12, 3),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_saxophone_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_saxophone_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_saxophone_cresc:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_clarinet:
+        component_limits = [
+            ("note_box", 14, 4),
+            ("dense_other", 6, 1),
+        ]
+
+    if is_clarinet_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_contrabassoon:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 5, 1),
+        ]
+
+    if is_contrabassoon_phrase:
+        component_limits = [
+            ("note_box", 6, 1),
+            ("dense_other", 4, 1),
+        ]
+
+    if is_cor_anglais:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_cor_anglais_phrase:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_cor_anglais_soft:
+        component_limits = [
+            ("note_box", 8, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_double_bass2:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_double_bass2_1string or is_double_bass2_3string:
+        component_limits = [
+            ("note_box", 9, 2),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_double_bass:
+        component_limits = [
+            ("note_box", 12, 4),
+            ("dense_other", 6, 1),
+        ]
+
+    if is_double_bass_phrase:
+        component_limits = [
+            ("note_box", 10, 2),
+            ("dense_other", 4, 0),
+        ]
+
+    if is_double_bass_pizz:
+        component_limits = [
+            ("note_box", 6, 1),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_double_bass_soft:
+        component_limits = [
+            ("note_box", 8, 2),
+            ("dense_other", 3, 0),
+        ]
+
+    if is_violin2:
+        component_limits = [
+            ("note_box", 22, 8),
+            ("dense_other", 8, 2),
+        ]
+
+    if is_violin2_2string or is_violin2_3string:
+        component_limits = [
+            ("note_box", 20, 8),
+            ("dense_other", 6, 1),
+        ]
+
+    if is_cello2:
+        component_limits = [
+            ("note_box", 22, 8),
+            ("dense_other", 10, 4),
+        ]
+
+    if is_cello2_1string:
+        component_limits = [
+            ("note_box", 22, 8),
+            ("dense_other", 6, 1),
+        ]
+
+    for component_type, early_keep, late_keep in component_limits:
+        sub = df[df["component_type"] == component_type]
+        if len(sub) == 0:
+            continue
+
+        kept_groups = []
+        for _, g in sub.groupby("frame_idx", sort=False):
+            frame_time = float(g["time_sec"].iloc[0])
+            frame_idx = int(g["frame_idx"].iloc[0])
+            is_late = frame_time >= late_threshold
+            if is_double_bass2:
+                is_late = is_late or frame_idx >= late_frame_threshold
+
+            cello2_tail_late = frame_time >= cello2_tail_threshold
+
+            if component_type == "dense_other" and is_cello2_1string and cello2_tail_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_cello2_2string and cello2_tail_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_bass_clarinet and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_bass_clarinet and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_piano_midi1 and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_banjo and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_banjo_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_banjo_very_long and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "dense_other" and is_banjo and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_banjo_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_banjo_very_long and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "note_box" and is_bass_guitar and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_bass_guitar_1string and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_real_piano and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_guitar2 and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and (is_guitar2_1string or is_guitar2_2string) and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_mandolin and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_mandolin_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_mandolin_very_long and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "dense_other" and is_mandolin and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_mandolin_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_bass_clarinet_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_bassoon_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_bassoon_phrase and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_french_horn_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_french_horn_soft and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "note_box" and is_french_horn_cresc and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_french_horn and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_french_horn_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_french_horn_long and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "dense_other" and (is_french_horn_legato or is_french_horn_gliss) and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_french_horn_nonlegato and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "note_box" and is_flute_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_flute_staccato_like and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_flute_cresc and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_flute_soft and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "dense_other" and is_flute and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_flute_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_flute_very_long and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "note_box" and is_oboe_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_oboe_staccato_like and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "dense_other" and is_oboe and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_oboe_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_saxophone and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_saxophone_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_saxophone_cresc and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "dense_other" and is_saxophone and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_saxophone_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_saxophone_cresc and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "note_box" and is_clarinet_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_clarinet and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_contrabassoon_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_contrabassoon and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_contrabassoon and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "dense_other" and is_cor_anglais and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_cor_anglais_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "note_box" and is_cor_anglais_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_double_bass2 and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and (is_double_bass2_1string or is_double_bass2_3string) and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "dense_other" and is_double_bass2_1string and is_late and frame_idx % 5 != 0:
+                continue
+
+            if component_type == "note_box" and is_double_bass2 and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "note_box" and (is_double_bass2_1string or is_double_bass2_3string) and is_late and frame_idx % 4 == 3:
+                continue
+
+            if component_type == "dense_other" and is_double_bass and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_double_bass_soft and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_double_bass_pizz and is_late and frame_idx % 4 != 0:
+                continue
+
+            if component_type == "note_box" and is_double_bass_phrase and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "note_box" and is_double_bass_soft and is_late and frame_idx % 3 == 2:
+                continue
+
+            if component_type == "note_box" and is_double_bass_pizz and is_late and frame_idx % 3 != 0:
+                continue
+
+            if component_type == "dense_other" and is_violin2_2string and is_late and frame_idx % 2 == 1:
+                continue
+
+            if component_type == "dense_other" and is_violin2_3string and is_late and frame_idx % 3 != 0:
+                continue
+
+            keep_n = late_keep if is_late else early_keep
+            kept_groups.append(g.sort_values("amplitude", ascending=False).head(keep_n))
+
+        if kept_groups:
+            out_parts.append(pd.concat(kept_groups, ignore_index=False))
+
+    if not out_parts:
+        return df.iloc[0:0].copy()
+
+    return (
+        pd.concat(out_parts, ignore_index=False)
+        .sort_values(["frame_idx", "component_type", "amplitude"], ascending=[True, True, False])
+        .reset_index(drop=True)
+    )
+
+
+def scene_extents(df):
+    xy_absmax = max(
+        1.0,
+        float(df["x12"].abs().max()) if len(df) else 1.0,
+        float(df["y12"].abs().max()) if len(df) else 1.0,
+    )
+    time_min = float(df["z_time"].min()) if len(df) else 0.0
+    time_max = float(df["z_time"].max()) if len(df) else 1.0
+    time_span = max(1e-9, time_max - time_min)
+    z_ratio = max(0.7, min(2.4, time_span / (xy_absmax * 0.9)))
+    return {
+        "xy_absmax": xy_absmax,
+        "time_min": time_min,
+        "time_max": time_max,
+        "z_ratio": z_ratio,
+    }
+
+
 def build_note_spiral3d_points(
     note_name,
     note_dir,
@@ -205,6 +919,7 @@ def build_note_spiral3d_points(
         )
 
     out_df = pd.DataFrame(rows)
+    out_df = thin_visual_layers(out_df, note_name=note_name)
 
     out_csv = os.path.join(out_dir, f"{note_name}__spiral3d_points.csv")
     out_df.to_csv(out_csv, index=False)
@@ -228,6 +943,7 @@ def build_note_spiral3d_points(
 def save_png(note_name, df, out_png):
     fig = plt.figure(figsize=(9, 8))
     ax = fig.add_subplot(111, projection="3d")
+    ext = scene_extents(df)
 
     types = [
         ("dense_other", "dense other", 10, 0.18),
@@ -255,6 +971,11 @@ def save_png(note_name, df, out_png):
     ax.set_xlabel("x12")
     ax.set_ylabel("y12")
     ax.set_zlabel("time_sec")
+    ax.set_xlim(-ext["xy_absmax"], ext["xy_absmax"])
+    ax.set_ylim(-ext["xy_absmax"], ext["xy_absmax"])
+    ax.set_zlim(ext["time_min"], ext["time_max"])
+    if hasattr(ax, "set_box_aspect"):
+        ax.set_box_aspect((1.0, 1.0, ext["z_ratio"]))
     ax.legend()
 
     plt.tight_layout()
@@ -273,6 +994,16 @@ def save_html(note_name, df, out_html):
         "chain": "chain",
         "note_box": "note box",
         "dense_other": "dense other",
+    }
+    type_colors = {
+        "dense_other": "#2563eb",
+        "note_box": "#f59e0b",
+        "chain": "#16a34a",
+    }
+    type_opacity = {
+        "dense_other": 0.48,
+        "note_box": 0.78,
+        "chain": 0.85,
     }
 
     for component_type in ["dense_other", "note_box", "chain"]:
@@ -306,12 +1037,14 @@ def save_html(note_name, df, out_html):
                         max(2.5, float(a) * 12.0)
                         for a in sub["relative_amp"].tolist()
                     ],
-                    "opacity": 0.75 if component_type != "dense_other" else 0.25,
+                    "opacity": type_opacity[component_type],
+                    "color": type_colors[component_type],
                 },
             }
         )
 
     payload = json.dumps(traces, ensure_ascii=False)
+    ext = scene_extents(df)
 
     html = f"""<!doctype html>
 <html>
@@ -325,16 +1058,64 @@ def save_html(note_name, df, out_html):
 <div id="plot" style="width:100%;height:900px;"></div>
 <script>
 const traces = {payload};
+function visibleSceneLayout(gd) {{
+  let xs = [];
+  let ys = [];
+  let zs = [];
+  for (const tr of gd.data) {{
+    if (tr.visible === 'legendonly') continue;
+    if (Array.isArray(tr.x)) xs = xs.concat(tr.x);
+    if (Array.isArray(tr.y)) ys = ys.concat(tr.y);
+    if (Array.isArray(tr.z)) zs = zs.concat(tr.z);
+  }}
+  if (!xs.length || !ys.length || !zs.length) return null;
+
+  let xyAbsMax = 1.0;
+  for (const v of xs) xyAbsMax = Math.max(xyAbsMax, Math.abs(Number(v) || 0));
+  for (const v of ys) xyAbsMax = Math.max(xyAbsMax, Math.abs(Number(v) || 0));
+
+  let zMin = Infinity;
+  let zMax = -Infinity;
+  for (const v of zs) {{
+    const num = Number(v) || 0;
+    if (num < zMin) zMin = num;
+    if (num > zMax) zMax = num;
+  }}
+  const zSpan = Math.max(1e-9, zMax - zMin);
+  const zRatio = Math.max(0.7, Math.min(2.4, zSpan / (xyAbsMax * 0.9)));
+
+  return {{
+    "scene.xaxis.range": [-xyAbsMax, xyAbsMax],
+    "scene.yaxis.range": [-xyAbsMax, xyAbsMax],
+    "scene.zaxis.range": [zMin, zMax],
+    "scene.aspectmode": "manual",
+    "scene.aspectratio": {{x: 1, y: 1, z: zRatio}},
+  }};
+}}
 const layout = {{
   scene: {{
-    xaxis: {{title: "x12"}},
-    yaxis: {{title: "y12"}},
-    zaxis: {{title: "time_sec"}}
+    xaxis: {{title: "x12", range: [-{ext["xy_absmax"]}, {ext["xy_absmax"]}]}},
+    yaxis: {{title: "y12", range: [-{ext["xy_absmax"]}, {ext["xy_absmax"]}]}},
+    zaxis: {{title: "time_sec", range: [{ext["time_min"]}, {ext["time_max"]}]}},
+    aspectmode: "manual",
+    aspectratio: {{x: 1, y: 1, z: {ext["z_ratio"]}}}
   }},
   margin: {{l: 0, r: 0, b: 0, t: 40}},
   legend: {{orientation: "h"}}
 }};
-Plotly.newPlot("plot", traces, layout);
+Plotly.newPlot("plot", traces, layout).then(function(gd) {{
+  const applyVisibleLayout = function() {{
+    const upd = visibleSceneLayout(gd);
+    if (upd) Plotly.relayout(gd, upd);
+  }};
+  gd.on('plotly_restyle', function() {{
+    setTimeout(applyVisibleLayout, 0);
+  }});
+  gd.on('plotly_doubleclick', function() {{
+    setTimeout(applyVisibleLayout, 0);
+  }});
+  applyVisibleLayout();
+}});
 </script>
 </body>
 </html>

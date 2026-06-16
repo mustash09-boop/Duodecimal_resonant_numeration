@@ -1,0 +1,51 @@
+BLOCK004 SPIRAL HEALTH AUDIT
+notes_csv=E:\Duodecimal_resonant_numeration\docs\reports\block004_spiral_audit_notes_2026-06-10.csv
+instruments_csv=E:\Duodecimal_resonant_numeration\docs\reports\block004_spiral_audit_instruments_2026-06-10.csv
+
+note_count=9040
+instrument_count=23
+full_fix=0
+partial_fix=0
+no_fix=9040
+
+TOP ROOT MISMATCHES:
+- bass_clarinet / bass-clarinet_A2_025_forte_normal -> 0 st | 7.A'a2 | looks consistent
+- bass_clarinet / bass-clarinet_A2_025_fortissimo_normal -> 0 st | 7.A'a3 | looks consistent
+- bass_clarinet / bass-clarinet_A2_025_mezzo-forte_staccato -> 0 st | 7.A'i1 | looks consistent
+- bass_clarinet / bass-clarinet_A2_025_pianissimo_normal -> 0 st | 7.A'- | looks consistent
+- bass_clarinet / bass-clarinet_A2_025_piano_normal -> 0 st | 7.A'a2 | looks consistent
+- bass_clarinet / bass-clarinet_A2_05_forte_normal -> 0 st | 7.A'a1 | looks consistent
+- bass_clarinet / bass-clarinet_A2_05_fortissimo_normal -> 0 st | 7.A'a2 | looks consistent
+- bass_clarinet / bass-clarinet_A2_05_pianissimo_normal -> 0 st | 7.A'- | looks consistent
+- bass_clarinet / bass-clarinet_A2_05_piano_normal -> 0 st | 7.A'a2 | looks consistent
+- bass_clarinet / bass-clarinet_A2_15_forte_normal -> 0 st | 7.A'a2 | looks consistent
+- bass_clarinet / bass-clarinet_A2_15_fortissimo_normal -> 0 st | 7.A'a3 | looks consistent
+- bass_clarinet / bass-clarinet_A2_15_pianissimo_normal -> 0 st | 7.A'a1 | looks consistent
+
+TOP DENSE TAIL VORTEX:
+- bassoon / bassoon_B2_025_fortissimo_normal -> dense_tail=4.643 | dense_last=65 | looks consistent
+- cello2 / 074_8.B-_cello2_2string -> dense_tail=4.55 | dense_last=91 | looks consistent
+- cello / cello_G3_05_forte_arco-normal -> dense_tail=3.923 | dense_last=51 | looks consistent
+- bassoon / bassoon_A3_05_fortissimo_normal -> dense_tail=3.9 | dense_last=39 | looks consistent
+- bassoon / bassoon_As4_05_piano_normal -> dense_tail=3.63 | dense_last=49 | looks consistent
+- bassoon / bassoon_D3_025_forte_normal -> dense_tail=3.412 | dense_last=29 | looks consistent
+- bassoon / bassoon_B3_025_forte_normal -> dense_tail=3.2 | dense_last=32 | looks consistent
+- bassoon / bassoon_A3_025_mezzo-piano_normal -> dense_tail=3.176 | dense_last=27 | looks consistent
+- bassoon / bassoon_F2_025_fortissimo_normal -> dense_tail=3.161 | dense_last=49 | looks consistent
+- bassoon / bassoon_A2_05_mezzo-piano_normal -> dense_tail=3.156 | dense_last=71 | looks consistent
+- bassoon / bassoon_D3_05_forte_normal -> dense_tail=3.1 | dense_last=31 | looks consistent
+- bassoon / bassoon_Gs2_1_piano_normal -> dense_tail=3.053 | dense_last=29 | looks consistent
+
+TOP BOX TAIL VORTEX:
+- bass_clarinet / bass-clarinet_Gs4_15_pianissimo_normal -> box_tail=13.0 | box_last=13 | looks consistent
+- contrabassoon / contrabassoon_B2_15_mezzo-forte_normal -> box_tail=9.0 | box_last=9 | looks consistent
+- cor_anglais / english-horn_G4_1_mezzo-piano_normal -> box_tail=8.0 | box_last=8 | looks consistent
+- bass_clarinet / bass-clarinet_As4_15_fortissimo_normal -> box_tail=7.0 | box_last=7 | looks consistent
+- bass_clarinet / bass-clarinet_Fs3_1_fortissimo_normal -> box_tail=7.0 | box_last=7 | looks consistent
+- clarinet / clarinet_B5_15_piano_normal -> box_tail=7.0 | box_last=7 | looks consistent
+- bass_clarinet / bass-clarinet_E4_1_forte_normal -> box_tail=6.0 | box_last=12 | looks consistent
+- bass_clarinet / bass-clarinet_G3_1_forte_normal -> box_tail=6.0 | box_last=6 | looks consistent
+- clarinet / clarinet_B4_phrase_mezzo-forte_normal -> box_tail=6.0 | box_last=12 | looks consistent
+- clarinet / clarinet_B5_15_forte_normal -> box_tail=6.0 | box_last=6 | looks consistent
+- cor_anglais / english-horn_A5_1_mezzo-forte_normal -> box_tail=6.0 | box_last=9 | looks consistent
+- cor_anglais / english-horn_B4_1_forte_normal -> box_tail=6.0 | box_last=12 | looks consistent

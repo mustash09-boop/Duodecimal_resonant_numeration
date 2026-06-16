@@ -214,6 +214,10 @@ def extract_root_hz(root_path):
 
 
 def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_frame_count):
+    note_name = os.path.basename(note_dir)
+    out_csv = os.path.join(out_dir, f"{note_name}__note_box_profile.csv")
+    out_txt = os.path.join(out_dir, f"{note_name}__note_box_profile.txt")
+
     points_path = None
     root_path = None
 
@@ -243,6 +247,70 @@ def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_fra
         return None
 
     total_frames = max(1, int(points_df["frame_idx"].nunique()))
+    is_banjo_note = note_name.startswith("banjo_")
+    is_banjo_soft = is_banjo_note and (
+        "_piano_" in note_name
+        or "_pianissimo_" in note_name
+        or "_mezzo-piano_" in note_name
+        or "_molto-pianissimo_" in note_name
+    )
+    is_banjo_very_long = is_banjo_note and (
+        "_long_" in note_name or "_very-long_" in note_name
+    )
+    is_bass_guitar_note = "_bass-guitar_" in note_name
+    is_real_piano_note = "_piano_real_" in note_name
+    is_guitar2_note = "_guitar2_" in note_name
+    is_guitar_note = note_name.startswith("guitar_")
+    is_bass_clarinet_note = note_name.startswith("bass-clarinet_")
+    is_bass_clarinet_phrase = is_bass_clarinet_note and "_phrase_" in note_name
+    is_bassoon_note = note_name.startswith("bassoon_")
+    is_bassoon_phrase = is_bassoon_note and "_phrase_" in note_name
+    is_french_horn_note = note_name.startswith("french-horn_")
+    is_french_horn_phrase = is_french_horn_note and "_phrase_" in note_name
+    is_french_horn_soft = is_french_horn_note and (
+        "_piano_" in note_name
+        or "_pianissimo_" in note_name
+        or "_mezzo-piano_" in note_name
+        or "_molto-pianissimo_" in note_name
+    )
+    is_french_horn_long = is_french_horn_note and (
+        "_long_" in note_name or "_very-long_" in note_name
+    )
+    is_french_horn_gliss = is_french_horn_note and "glissando" in note_name
+    is_french_horn_legato = is_french_horn_phrase and "legato" in note_name
+    is_french_horn_nonlegato = is_french_horn_phrase and "nonlegato" in note_name
+    is_french_horn_cresc = is_french_horn_note and (
+        "cresc-decresc" in note_name or "decrescendo" in note_name or "crescendo" in note_name
+    )
+    is_flute_note = note_name.startswith("flute_")
+    is_flute_phrase = is_flute_note and "_phrase_" in note_name
+    is_flute_soft = is_flute_note and (
+        "_piano_" in note_name
+        or "_pianissimo_" in note_name
+        or "_mezzo-piano_" in note_name
+        or "_molto-pianissimo_" in note_name
+    )
+    is_flute_very_long = is_flute_note and ("_very-long_" in note_name or "_long_" in note_name)
+    is_flute_cresc = is_flute_note and ("cresc-decresc" in note_name or "decresc-cresc" in note_name)
+    is_clarinet_note = note_name.startswith("clarinet_")
+    is_clarinet_phrase = is_clarinet_note and "_phrase_" in note_name
+    is_contrabassoon_note = note_name.startswith("contrabassoon_")
+    is_contrabassoon_phrase = is_contrabassoon_note and "_phrase_" in note_name
+    is_double_bass2_note = "_double-bass2_" in note_name
+    is_double_bass_note = note_name.startswith("double-bass_")
+    is_double_bass_phrase = is_double_bass_note and "_phrase_" in note_name
+    is_double_bass_pizz = is_double_bass_note and "_pizz-" in note_name
+    is_double_bass_soft = is_double_bass_note and (
+        "_piano_" in note_name
+        or "_pianissimo_" in note_name
+        or "_molto-pianissimo_" in note_name
+        or "_mezzo-piano_" in note_name
+    )
+    frame_min = int(points_df["frame_idx"].min())
+    frame_max = int(points_df["frame_idx"].max())
+    frame_span = max(1, frame_max - frame_min + 1)
+    early_limit = frame_min + int(frame_span / 3.0)
+    late_limit = frame_min + int((2.0 * frame_span) / 3.0)
 
     box_rows = []
 
@@ -267,6 +335,13 @@ def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_fra
     for token, g in grouped:
         frame_count = int(g["frame_idx"].nunique())
         presence_ratio = frame_count / total_frames
+        mean_hz = float(g["hz"].mean())
+        freq_ratio = mean_hz / float(root_hz) if root_hz > 0 else 0.0
+        early_count = int((g["frame_idx"] <= early_limit).sum())
+        late_count = int((g["frame_idx"] >= late_limit).sum())
+        total_count = max(1, int(len(g)))
+        early_ratio = early_count / total_count
+        late_ratio = late_count / total_count
 
         if frame_count < min_frame_count:
             continue
@@ -274,14 +349,269 @@ def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_fra
         if presence_ratio < min_presence_ratio:
             continue
 
+        # Box/body should stay local to the note, not become an ultra-high late-tail field.
+        if freq_ratio > 24.0:
+            continue
+
+        if late_ratio >= 0.85 and early_ratio <= 0.05:
+            continue
+
+        # Suppress late-emerging high-ratio tail swirls that appear after the real body has decayed.
+        if freq_ratio > 14.0 and late_ratio >= 0.80 and early_ratio <= 0.15:
+            continue
+
+        if freq_ratio > 18.0 and late_ratio >= 0.70 and early_ratio <= 0.25:
+            continue
+
+        if is_banjo_note:
+            if freq_ratio > 8.0 and late_ratio >= 0.88 and early_ratio <= 0.12:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.82 and early_ratio <= 0.18:
+                continue
+            if late_ratio >= 0.76 and early_ratio <= 0.10 and frame_count >= 10:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.70 and early_ratio <= 0.14 and frame_count >= 10:
+                continue
+            if frame_count <= 18 and presence_ratio <= 0.14 and freq_ratio >= 1.2 and late_ratio >= 0.66:
+                continue
+
+        if is_banjo_very_long:
+            if late_ratio >= 0.70 and early_ratio <= 0.14 and frame_count >= 10:
+                continue
+            if freq_ratio > 3.5 and late_ratio >= 0.66 and early_ratio <= 0.18:
+                continue
+
+        if is_banjo_soft and is_banjo_very_long:
+            if late_ratio >= 0.62 and early_ratio <= 0.18:
+                continue
+            if freq_ratio > 3.0 and late_ratio >= 0.58 and early_ratio <= 0.22:
+                continue
+
+        if is_bass_guitar_note:
+            if late_ratio >= 0.70 and early_ratio <= 0.10:
+                continue
+            if freq_ratio > 8.0 and late_ratio >= 0.60 and early_ratio <= 0.05:
+                continue
+            if frame_count <= 7 and presence_ratio <= 0.07 and late_ratio >= 0.66:
+                continue
+            if frame_count <= 12 and presence_ratio <= 0.12 and freq_ratio >= 2.0 and late_ratio >= 0.66 and early_ratio <= 0.18:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.66 and early_ratio <= 0.18 and frame_count <= 14:
+                continue
+
+        if is_real_piano_note:
+            if freq_ratio > 5.0 and late_ratio >= 0.74 and early_ratio <= 0.05:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.70 and early_ratio <= 0.08:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.78 and early_ratio <= 0.06:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.72 and early_ratio <= 0.08:
+                continue
+            if freq_ratio > 14.0 and late_ratio >= 0.66 and early_ratio <= 0.12:
+                continue
+
+        if is_guitar2_note:
+            if late_ratio >= 0.82 and early_ratio <= 0.12:
+                continue
+            if freq_ratio > 6.0 and late_ratio >= 0.75 and early_ratio <= 0.20:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.65 and early_ratio <= 0.35:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.50 and early_ratio <= 0.35:
+                continue
+
+        if is_guitar_note:
+            if late_ratio >= 0.88 and early_ratio <= 0.12:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.82 and early_ratio <= 0.18:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.72 and early_ratio <= 0.28:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.55 and early_ratio <= 0.35:
+                continue
+
+        if is_bass_clarinet_note:
+            if frame_count <= 2 and presence_ratio <= 0.055:
+                continue
+            if frame_count <= 7 and presence_ratio <= 0.20 and early_ratio >= 0.66 and freq_ratio >= 2.5:
+                continue
+            if (
+                frame_count <= 30
+                and presence_ratio <= 0.11
+                and late_ratio >= 0.68
+                and early_ratio <= 0.08
+                and freq_ratio >= 2.5
+            ):
+                continue
+            if freq_ratio > 12.0:
+                continue
+            if freq_ratio > 8.0 and frame_count < 60:
+                continue
+            if freq_ratio > 6.0 and late_ratio >= 0.78 and early_ratio <= 0.18:
+                continue
+
+        if is_bass_clarinet_phrase:
+            if frame_count <= 8 and presence_ratio <= 0.20 and freq_ratio >= 2.5:
+                continue
+            if freq_ratio > 6.0:
+                continue
+
+        if is_bassoon_phrase:
+            if freq_ratio > 12.0:
+                continue
+            if freq_ratio > 9.0 and presence_ratio <= 0.10:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.76 and early_ratio <= 0.10:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.80 and early_ratio <= 0.08 and frame_count >= 30:
+                continue
+
+        if is_french_horn_phrase:
+            if late_ratio >= 0.70 and early_ratio <= 0.18 and frame_count >= 14:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.60 and early_ratio <= 0.24:
+                continue
+            if frame_count <= 12 and presence_ratio <= 0.10 and late_ratio >= 0.58:
+                continue
+
+        if is_french_horn_gliss:
+            if late_ratio >= 0.58 and early_ratio <= 0.24:
+                continue
+
+        if is_french_horn_legato:
+            if freq_ratio > 4.0 and late_ratio >= 0.56 and early_ratio <= 0.26:
+                continue
+
+        if is_french_horn_nonlegato:
+            if freq_ratio > 3.5 and late_ratio >= 0.50 and early_ratio <= 0.26:
+                continue
+
+        if is_french_horn_soft:
+            if frame_count <= 16 and presence_ratio <= 0.18 and freq_ratio >= 1.2 and late_ratio >= 0.46:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.54 and early_ratio <= 0.28:
+                continue
+
+        if is_french_horn_long:
+            if freq_ratio > 4.5 and late_ratio >= 0.62 and early_ratio <= 0.28:
+                continue
+
+        if is_french_horn_cresc:
+            if late_ratio >= 0.66 and early_ratio <= 0.22 and frame_count >= 12:
+                continue
+
+        if is_flute_phrase:
+            if late_ratio >= 0.72 and early_ratio <= 0.22 and frame_count >= 10:
+                continue
+            if late_ratio >= 0.62 and early_ratio <= 0.18 and frame_count >= 18:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.58 and early_ratio <= 0.28:
+                continue
+            if freq_ratio > 6.0 and presence_ratio <= 0.18:
+                continue
+
+        if is_flute_soft:
+            if frame_count <= 14 and presence_ratio <= 0.18 and freq_ratio >= 1.2 and late_ratio >= 0.42:
+                continue
+            if root_hz >= 600.0 and frame_count <= 22 and presence_ratio <= 0.24 and freq_ratio >= 0.95:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.54 and early_ratio <= 0.26:
+                continue
+
+        if is_flute_very_long:
+            if freq_ratio > 6.0 and late_ratio >= 0.68 and early_ratio <= 0.22:
+                continue
+
+        if is_flute_cresc:
+            if late_ratio >= 0.64 and early_ratio <= 0.28 and frame_count >= 20:
+                continue
+
+        if is_clarinet_phrase:
+            if freq_ratio > 10.0:
+                continue
+            if freq_ratio > 6.0 and presence_ratio <= 0.11:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.78 and early_ratio <= 0.12:
+                continue
+            if frame_count <= 12 and late_ratio >= 0.66 and presence_ratio <= 0.10:
+                continue
+
+        if is_clarinet_note and not is_clarinet_phrase:
+            if frame_count <= 10 and presence_ratio <= 0.08 and freq_ratio >= 1.8 and late_ratio >= 0.50:
+                continue
+
+        if is_contrabassoon_phrase:
+            if freq_ratio > 16.0:
+                continue
+            if freq_ratio > 10.0 and presence_ratio <= 0.12:
+                continue
+            if freq_ratio > 6.0 and presence_ratio <= 0.08 and frame_count <= 50:
+                continue
+            if freq_ratio > 6.0 and late_ratio >= 0.62 and early_ratio <= 0.18:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.74 and early_ratio <= 0.12:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.80 and early_ratio <= 0.10 and frame_count >= 45:
+                continue
+
+        if is_contrabassoon_note and not is_contrabassoon_phrase:
+            if frame_count <= 15 and presence_ratio <= 0.12 and freq_ratio >= 1.5 and late_ratio >= 0.55:
+                continue
+            if frame_count <= 20 and presence_ratio <= 0.11 and freq_ratio >= 2.3:
+                continue
+
+        if is_double_bass2_note:
+            if frame_count <= 16 and presence_ratio <= 0.12 and freq_ratio >= 2.5 and late_ratio >= 0.50:
+                continue
+            if freq_ratio > 8.0 and late_ratio >= 0.74 and early_ratio <= 0.15:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.84 and early_ratio <= 0.10:
+                continue
+            if frame_count <= 18 and presence_ratio <= 0.14 and late_ratio >= 0.84 and early_ratio <= 0.18 and freq_ratio >= 0.9:
+                continue
+            if frame_count <= 12 and presence_ratio <= 0.10 and late_ratio >= 0.78 and early_ratio <= 0.20:
+                continue
+
+        if is_double_bass_phrase:
+            if late_ratio >= 0.78 and early_ratio <= 0.18 and frame_count >= 16:
+                continue
+            if freq_ratio > 6.0 and late_ratio >= 0.70 and early_ratio <= 0.25:
+                continue
+            if freq_ratio > 10.0 and late_ratio >= 0.55 and early_ratio <= 0.35:
+                continue
+
+        if is_double_bass_pizz:
+            if late_ratio >= 0.72 and early_ratio <= 0.20 and frame_count >= 10:
+                continue
+            if freq_ratio > 4.0 and late_ratio >= 0.55 and early_ratio <= 0.30:
+                continue
+
+        if is_double_bass_soft:
+            if frame_count <= 10 and presence_ratio <= 0.12 and freq_ratio >= 1.8 and late_ratio >= 0.50:
+                continue
+            if freq_ratio > 5.0 and late_ratio >= 0.72 and early_ratio <= 0.18:
+                continue
+            if freq_ratio > 7.0 and late_ratio >= 0.60 and early_ratio <= 0.30:
+                continue
+
+        if is_double_bass_note:
+            if frame_count <= 8 and presence_ratio <= 0.08 and freq_ratio >= 2.5:
+                continue
+
         records.append({
             "token": str(token),
-            "mean_hz": float(g["hz"].mean()),
+            "mean_hz": mean_hz,
             "median_hz": float(g["hz"].median()),
             "mean_amp": float(g["amp"].mean()),
             "median_amp": float(g["amp"].median()),
             "frame_count": frame_count,
             "presence_ratio": float(presence_ratio),
+            "freq_ratio": float(freq_ratio),
+            "early_count": early_count,
+            "late_count": late_count,
+            "early_ratio": float(early_ratio),
+            "late_ratio": float(late_ratio),
             "mean_x12": float(g["x12"].mean()),
             "mean_y12": float(g["y12"].mean()),
             "root_hz": float(root_hz),
@@ -289,18 +619,43 @@ def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_fra
         })
 
     if not records:
-        return None
+        empty_cols = [
+            "token",
+            "mean_hz",
+            "median_hz",
+            "mean_amp",
+            "median_amp",
+            "frame_count",
+            "presence_ratio",
+            "freq_ratio",
+            "early_count",
+            "late_count",
+            "early_ratio",
+            "late_ratio",
+            "mean_x12",
+            "mean_y12",
+            "root_hz",
+            "source_note_dir",
+        ]
+        pd.DataFrame(columns=empty_cols).to_csv(out_csv, index=False)
+        with open(out_txt, "w", encoding="utf-8") as f:
+            f.write(f"NOTE BOX PROFILE: {note_name}\n")
+            f.write("=" * 80 + "\n")
+            f.write(f"source_points_csv        : {points_path}\n")
+            f.write(f"root_hz                  : {root_hz}\n")
+            f.write(f"harmonic_tolerance_cents : {tolerance_cents}\n")
+            f.write(f"min_presence_ratio       : {min_presence_ratio}\n")
+            f.write(f"min_frame_count          : {min_frame_count}\n")
+            f.write(f"total_frames             : {total_frames}\n")
+            f.write("box_components           : 0\n")
+            f.write("status                   : empty_profile_new_schema\n")
+        return pd.DataFrame(columns=empty_cols)
 
     result_df = (
         pd.DataFrame(records)
         .sort_values(by=["presence_ratio", "mean_amp"], ascending=[False, False])
         .reset_index(drop=True)
     )
-
-    note_name = os.path.basename(note_dir)
-
-    out_csv = os.path.join(out_dir, f"{note_name}__note_box_profile.csv")
-    out_txt = os.path.join(out_dir, f"{note_name}__note_box_profile.txt")
 
     result_df.to_csv(out_csv, index=False)
 
@@ -319,16 +674,21 @@ def process_note(note_dir, out_dir, tolerance_cents, min_presence_ratio, min_fra
             f.write(
                 f"{str(r['token']):14} "
                 f"hz={r['mean_hz']:.3f} "
+                f"ratio={r['freq_ratio']:.2f} "
                 f"frames={int(r['frame_count']):4d} "
                 f"presence={r['presence_ratio']:.3f} "
+                f"late={r['late_ratio']:.3f} "
                 f"mean_amp={r['mean_amp']:.6f}\n"
             )
+
+    allowed_tokens = set(result_df["token"].astype(str).tolist())
+    box_df_for_plot = box_df[box_df["note_token"].astype(str).isin(allowed_tokens)].copy()
 
     save_note_box_spiral_png(
         note_name=note_name,
         root_hz=root_hz,
         points_df=points_df,
-        box_df=box_df,
+        box_df=box_df_for_plot,
         out_dir=out_dir,
         tolerance_cents=tolerance_cents,
     )

@@ -1,0 +1,11 @@
+Block004 percussion audit 2026-06-16
+
+manifest_event_rows = 148
+instrument_count = 39
+event_rows_ok = 148
+event_rows_missing_assets = 0
+instruments_ok = 39
+instruments_review = 0
+
+events_csv = E:\Duodecimal_resonant_numeration\docs\reports\block004_percussion_audit_events_2026-06-16.csv
+instruments_csv = E:\Duodecimal_resonant_numeration\docs\reports\block004_percussion_audit_instruments_2026-06-16.csv

@@ -1,4 +1,0 @@
-﻿trace_index,trace_name,material_name,rgb_r,rgb_g,rgb_b,point_count
-0,violin2 / chain core,violin2___chain_core,0.13333333333333333,0.7725490196078432,0.3686274509803922,1306
-1,violin2 / note_box body,violin2___note_box_body,0.9607843137254902,0.6196078431372549,0.043137254901960784,1587
-2,violin2 / secondary harmonics,violin2___secondary_harmonics,0.5450980392156862,0.3607843137254902,0.9647058823529412,948
